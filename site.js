@@ -84,3 +84,30 @@ document.querySelectorAll('.nav-search-toggle').forEach(btn => {
 document.addEventListener('click', e => {
   document.querySelectorAll('.nav-search.open').forEach(ns => { if(!ns.contains(e.target)) ns.classList.remove('open'); });
 });
+
+// ---------- homepage: filter destination tiles by country ----------
+(function(){
+  const wrap = document.querySelector('.destfilter-pills');
+  const grid = document.querySelector('.citytiles');
+  if(!wrap || !grid) return;
+  const tiles = Array.from(grid.querySelectorAll('.citytile'));
+  const showAll = wrap.querySelector('.destpill-showall');
+  const pills = Array.from(wrap.querySelectorAll('.destpill[data-country]'));
+  function reset(){
+    pills.forEach(p => p.classList.remove('active'));
+    tiles.forEach(t => { t.style.display=''; });
+    if(showAll){ showAll.hidden = true; wrap.appendChild(showAll); }
+  }
+  pills.forEach(p => {
+    p.addEventListener('click', () => {
+      const wasActive = p.classList.contains('active');
+      reset();
+      if(wasActive) return;                 // clicking the active country again clears it
+      p.classList.add('active');
+      const c = p.dataset.country;
+      tiles.forEach(t => { t.style.display = (t.dataset.country === c) ? '' : 'none'; });
+      if(showAll){ p.after(showAll); showAll.hidden = false; showAll.scrollIntoView({block:'nearest',inline:'nearest'}); }
+    });
+  });
+  if(showAll) showAll.addEventListener('click', reset);
+})();

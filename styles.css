@@ -342,3 +342,29 @@ html.js .reveal.in{opacity:1;transform:none}
 .foot-explore-links a{display:block;break-inside:avoid;text-decoration:none;color:#3a3630;font-weight:500;margin-bottom:.55em;font-size:.96rem}
 .foot-explore-links a:hover{color:var(--accent-ink)}
 @media(max-width:640px){.foot-explore-links{columns:2}}
+
+/* ---------- footer: Our Story / Contact under the tagline ---------- */
+.foot-about-links{margin-top:1.15rem;display:flex;gap:22px}
+.foot-about-links a{text-decoration:none;color:#3a3630;font-weight:600;font-size:.96rem}
+.foot-about-links a:hover{color:var(--accent-ink)}
+
+/* ---------- homepage country filter pills ---------- */
+.destfilter{margin:0 0 24px}
+.destfilter-pills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center}
+.destpill{display:inline-flex;align-items:center;gap:.45em;font-family:var(--sans);font-weight:600;font-size:.9rem;
+  color:var(--ink);background:#fff;border:1px solid var(--hair);border-radius:999px;padding:.5em 1.05em;cursor:pointer;white-space:nowrap;
+  transition:border-color .15s ease,color .15s ease,box-shadow .15s ease,transform .15s ease,background .15s ease}
+.destpill::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);flex:none}
+.destpill:hover{border-color:var(--accent);color:var(--accent-ink);box-shadow:0 6px 18px -10px rgba(251,90,30,.6);transform:translateY(-1px)}
+.destpill.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.destpill.active::before{background:#fff}
+.destpill-showall{border-style:dashed;border-color:var(--accent);color:var(--accent-ink);font-weight:700}
+.destpill-showall::before{display:none}
+.destpill[hidden]{display:none}
+.destpill-showall:hover{background:var(--accent);color:#fff}
+@media(max-width:760px){
+  .destfilter-pills{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;
+    -webkit-overflow-scrolling:touch;scrollbar-width:none;padding:2px 4px 6px;margin-inline:-4px}
+  .destfilter-pills::-webkit-scrollbar{display:none}
+  .destpill{flex:0 0 auto}
+}
