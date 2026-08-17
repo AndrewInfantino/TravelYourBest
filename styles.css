@@ -231,9 +231,10 @@ html.js .reveal.in{opacity:1;transform:none}
   .spot:nth-child(even) .spot-media{order:0}
   .about-grid{grid-template-columns:1fr}
   .form-grid{grid-template-columns:1fr}
-  .gallery{columns:2}
+  .gallery{display:grid;grid-template-columns:1fr 1fr;gap:12px;column-gap:12px}
+  .gallery img{aspect-ratio:1/1;object-fit:cover;margin-bottom:0}
 }
-@media(max-width:520px){ .gallery{columns:1} .gear .btn{margin-left:0} .reel{grid-template-columns:1fr 1fr} }
+@media(max-width:520px){ .gear .btn{margin-left:0} .reel{grid-template-columns:1fr 1fr} }
 @media(prefers-reduced-motion:reduce){
   *{scroll-behavior:auto!important}
   html.js .reveal{opacity:1!important;transform:none!important;transition:none}

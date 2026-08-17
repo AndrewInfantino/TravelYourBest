@@ -30,6 +30,7 @@ const DESTS = [
   {n:'Cappadocia',s:'Turkey',u:'cappadocia.html'},
   {n:'Dominican Republic',s:'Punta Cana, Samaná & more',u:'dominican-republic.html'},
   {n:'Dubrovnik',s:'Croatia',u:'dubrovnik.html'},
+  {n:'Florence',s:'Bologna, Pisa & Italy',u:'florence.html'},
   {n:'Israel & Palestine',s:'Jerusalem, Bethlehem & Tel Aviv',u:'israel-palestine.html'},
   {n:'Istanbul',s:'Turkey',u:'istanbul.html'},
   {n:'Japan',s:'Osaka, Kyoto & Tokyo',u:'japan.html'},
