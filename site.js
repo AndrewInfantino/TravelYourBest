@@ -39,13 +39,17 @@ const DESTS = [
   {n:'Lanzarote',s:'Canary Islands · Spain',u:'lanzarote.html'},
   {n:'London',s:'England',u:'london.html'},
   {n:'Mexico',s:'Cozumel & Costa Maya',u:'mexico.html'},
+  {n:'Miami',s:'Miami & Fort Lauderdale · Florida',u:'miami.html'},
+  {n:'Montreal',s:'Quebec, Canada',u:'montreal.html'},
   {n:'Morocco',s:'Marrakesh, Sahara & more',u:'morocco.html'},
   {n:'Nassau',s:'Bahamas',u:'nassau.html'},
   {n:'Positano & Capri',s:'Amalfi Coast · Italy',u:'positano.html'},
+  {n:'Sicily',s:'Palermo & Mondello · Italy',u:'sicily.html'},
   {n:'Singapore',s:'Singapore',u:'singapore.html'},
   {n:'Strasbourg & Alsace',s:'France',u:'strasbourg.html'},
   {n:'Thailand',s:'Bangkok & Phuket',u:'thailand.html'},
   {n:'Tunis',s:'Tunisia',u:'tunis.html'},
+  {n:'Venice',s:'Burano, Murano & Italy',u:'venice.html'},
   {n:'Vietnam',s:'Hanoi & Ninh Binh',u:'vietnam.html'}
 ];
 function initDesSearch(root){
