@@ -196,3 +196,48 @@ document.addEventListener('click', e => {
   window.addEventListener('resize',apply);
   apply();
 })();
+
+/* ---- Inline AJAX submit for email signup forms (no FormSubmit redirect) ---- */
+(function () {
+  var forms = document.querySelectorAll('form.foot-signup, form.signup-form');
+  if (!forms.length) return;
+  forms.forEach(function (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var honey = form.querySelector('input[name="_honey"]');
+      if (honey && honey.value) return;                       // bot trap
+      var emailEl = form.querySelector('input[type="email"]');
+      if (!emailEl || !emailEl.checkValidity()) { form.reportValidity && form.reportValidity(); return; }
+      var btn = form.querySelector('button[type="submit"]');
+      if (btn) { btn.disabled = true; btn.dataset.orig = btn.innerHTML; btn.textContent = 'Joining…'; }
+
+      var payload = {};
+      new FormData(form).forEach(function (v, k) { if (k.charAt(0) !== '_' || k === '_subject') payload[k] = v; });
+      var endpoint = (form.getAttribute('action') || '').replace('formsubmit.co/', 'formsubmit.co/ajax/');
+
+      fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        if (data && (data.success === 'true' || data.success === true)) { showSuccess(form); }
+        else { throw new Error('formsubmit'); }
+      })
+      .catch(function () {
+        // graceful fallback: do a normal (redirecting) submit if AJAX fails
+        if (btn) { btn.disabled = false; if (btn.dataset.orig) btn.innerHTML = btn.dataset.orig; }
+        form.submit();
+      });
+    });
+  });
+
+  function showSuccess(form) {
+    var msg = document.createElement('div');
+    msg.className = 'signup-success';
+    msg.setAttribute('role', 'status');
+    msg.innerHTML = "<strong>You're in! 🎉</strong> Thanks for joining the journey — see you in your inbox.";
+    form.parentNode.replaceChild(msg, form);
+  }
+})();
