@@ -409,3 +409,29 @@ html.js .reveal.in{opacity:1;transform:none}
   .tybpin-dot{width:14px;height:14px}
   .tybmap-ctrl button{width:40px;height:40px}
 }
+
+/* ---------- newsletter / journey signup ---------- */
+.foot-signup{margin-top:22px;max-width:330px}
+.foot-signup-label{display:block;font-size:.9rem;color:var(--ink-soft);line-height:1.45;margin-bottom:.7em;max-width:34ch}
+.foot-signup-row{display:flex;gap:8px}
+.signup-input{font:inherit;font-size:.95rem;padding:11px 13px;border:1.5px solid var(--hair);border-radius:11px;
+  background:#fff;color:var(--ink);width:100%;min-width:0}
+.signup-input::placeholder{color:#a49c92}
+.signup-input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(251,90,30,.12)}
+.foot-signup .signup-btn{white-space:nowrap;flex:0 0 auto}
+/* dedicated card (contact page) */
+.signup-section{padding:clamp(16px,3vw,32px) 0 clamp(48px,7vw,80px)}
+.signup-card{background:linear-gradient(180deg,#fff6f1,#fff);border:1px solid var(--hair);border-radius:22px;
+  padding:clamp(26px,4vw,44px);display:flex;gap:26px 44px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.signup-card-copy{max-width:48ch}
+.signup-card-copy .eyebrow{margin-bottom:.5em}
+.signup-card-copy h2{margin:.1em 0 .4em}
+.signup-card-copy p:last-child{margin:0;color:var(--ink-soft)}
+.signup-form{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.signup-card .signup-input{min-width:240px;width:auto}
+@media (max-width:760px){
+  .signup-card{flex-direction:column;align-items:flex-start}
+  .signup-card .signup-form{width:100%}
+  .signup-card .signup-input{flex:1 1 100%;min-width:0;width:100%}
+  .signup-card .signup-btn{width:100%;justify-content:center}
+}
