@@ -197,24 +197,20 @@ document.addEventListener('click', e => {
   apply();
 })();
 
-/* ---- Inline AJAX submit for email signup forms (no FormSubmit redirect) ---- */
+/* ---- Inline AJAX submit for FormSubmit forms (no redirect to FormSubmit page) ---- */
 (function () {
-  var forms = document.querySelectorAll('form.foot-signup, form.signup-form');
-  if (!forms.length) return;
-  forms.forEach(function (form) {
+  function attachAjax(form, successHTML, busyLabel) {
+    if (!form) return;
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var honey = form.querySelector('input[name="_honey"]');
       if (honey && honey.value) return;                       // bot trap
-      var emailEl = form.querySelector('input[type="email"]');
-      if (!emailEl || !emailEl.checkValidity()) { form.reportValidity && form.reportValidity(); return; }
+      if (!form.checkValidity()) { form.reportValidity && form.reportValidity(); return; }
       var btn = form.querySelector('button[type="submit"]');
-      if (btn) { btn.disabled = true; btn.dataset.orig = btn.innerHTML; btn.textContent = 'Joining…'; }
-
+      if (btn) { btn.disabled = true; btn.dataset.orig = btn.innerHTML; btn.textContent = busyLabel || 'Sending…'; }
       var payload = {};
-      new FormData(form).forEach(function (v, k) { if (k.charAt(0) !== '_' || k === '_subject') payload[k] = v; });
+      new FormData(form).forEach(function (v, k) { if (k !== '_honey') payload[k] = v; });
       var endpoint = (form.getAttribute('action') || '').replace('formsubmit.co/', 'formsubmit.co/ajax/');
-
       fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
@@ -222,22 +218,29 @@ document.addEventListener('click', e => {
       })
       .then(function (r) { return r.json(); })
       .then(function (data) {
-        if (data && (data.success === 'true' || data.success === true)) { showSuccess(form); }
+        if (data && (data.success === 'true' || data.success === true)) { showSuccess(form, successHTML); }
         else { throw new Error('formsubmit'); }
       })
       .catch(function () {
-        // graceful fallback: do a normal (redirecting) submit if AJAX fails
         if (btn) { btn.disabled = false; if (btn.dataset.orig) btn.innerHTML = btn.dataset.orig; }
-        form.submit();
+        form.submit();                                          // graceful fallback to normal submit
       });
     });
-  });
-
-  function showSuccess(form) {
-    var msg = document.createElement('div');
-    msg.className = 'signup-success';
-    msg.setAttribute('role', 'status');
-    msg.innerHTML = "<strong>You're in! 🎉</strong> Thanks for joining the journey — see you in your inbox.";
-    form.parentNode.replaceChild(msg, form);
   }
+
+  function showSuccess(form, html) {
+    var wide = form.id === 'contactForm';
+    var msg = document.createElement('div');
+    msg.className = 'signup-success' + (wide ? ' signup-success--wide' : '');
+    msg.setAttribute('role', 'status');
+    msg.innerHTML = html;
+    form.parentNode.replaceChild(msg, form);
+    msg.scrollIntoView({ block: 'center', behavior: 'smooth' });
+  }
+
+  document.querySelectorAll('form.foot-signup, form.signup-form').forEach(function (f) {
+    attachAjax(f, "<strong>You're in! 🎉</strong> Thanks for joining the journey — see you in your inbox.", 'Joining…');
+  });
+  attachAjax(document.getElementById('contactForm'),
+    "<strong>Message sent! ✅</strong> Thanks for reaching out — we'll get back to you as soon as we can.", 'Sending…');
 })();

@@ -78,7 +78,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:600;letter-spacing:-.02em;line-hei
 .btn:hover .arrow{transform:translateX(3px)}
 
 /* ---------- hero (home) ---------- */
-.home-hero{padding:clamp(48px,9vw,104px) 0 clamp(30px,5vw,56px)}
+.home-hero{padding:clamp(24px,4.5vw,52px) 0 clamp(30px,5vw,56px)}
 .home-hero .display{max-width:14ch}
 .home-hero .lead{max-width:52ch;margin:1.4rem 0 2rem}
 .hero-cta{display:flex;flex-wrap:wrap;gap:14px}
@@ -86,6 +86,12 @@ h1,h2,h3{font-family:var(--serif);font-weight:600;letter-spacing:-.02em;line-hei
 .hero-strip figure{margin:0;border-radius:18px;overflow:hidden;position:relative;background:var(--paper-2)}
 .hero-strip img{width:100%;height:100%;object-fit:cover}
 .hero-strip .col2{display:grid;grid-template-rows:1fr 1fr;gap:14px}
+/* two-column hero: copy left, feature photo right */
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:clamp(28px,5vw,60px);align-items:center}
+.hero-copy{min-width:0}
+.hero-figure{margin:0;border-radius:24px;overflow:hidden;box-shadow:var(--shadow);background:var(--paper-2);position:relative}
+.hero-figure img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.hero-figure:hover img{transform:scale(1.04)}
 
 /* ---------- destination cover (trip pages) ---------- */
 .cover{position:relative;border-radius:24px;overflow:hidden;margin-top:22px;box-shadow:var(--shadow);isolation:isolate}
@@ -222,6 +228,8 @@ html.js .reveal.in{opacity:1;transform:none}
   .nav.open .nav-links a{display:block;width:100%;padding:12px 2px;font-size:1.05rem}
   .nav.open .nav-social{display:flex;order:7;flex-basis:100%;width:100%;justify-content:flex-start;gap:22px;padding:14px 2px 4px;border-top:1px solid var(--hair)}
   .burger{display:block}
+  .hero-grid{grid-template-columns:1fr;gap:clamp(26px,7vw,38px)}
+  .hero-figure img{aspect-ratio:1/1}
   .hero-strip{grid-template-columns:1fr 1fr;height:auto}
   .hero-strip>figure{height:240px}
   .hero-strip figure:first-child{grid-column:1/-1;height:280px}
@@ -238,7 +246,7 @@ html.js .reveal.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){
   *{scroll-behavior:auto!important}
   html.js .reveal{opacity:1!important;transform:none!important;transition:none}
-  .spot-media img,.dest img,.ig-grid img{transition:none}
+  .spot-media img,.dest img,.ig-grid img,.hero-figure img{transition:none}
 }
 
 /* Day-trip recommendation cards (two GYG boxes side by side) */
@@ -440,3 +448,4 @@ html.js .reveal.in{opacity:1;transform:none}
   border-radius:12px;padding:12px 15px;max-width:360px;margin-top:22px}
 .signup-success strong{color:#1f7a3d}
 .signup-card .signup-success{margin-top:0}
+.signup-success--wide{max-width:560px}
