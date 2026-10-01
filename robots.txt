@@ -24,3 +24,5 @@ User-agent: Applebot-Extended
 Allow: /
 
 Sitemap: https://travelyourbest.com/sitemap.xml
+
+# RSS feed: https://travelyourbest.com/feed.xml
