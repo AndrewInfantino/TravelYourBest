@@ -464,3 +464,13 @@ html.js .reveal.in{opacity:1;transform:none}
 .tr-btn:hover{background:#2c86bd;transform:translateY(-1px)}
 @media (max-width:720px){.tr-callout{grid-template-columns:1fr}.tr-btn{justify-self:start}}
 .spots > .tr-callout{margin:0}
+
+/* ---------- Keep exploring (related guides) ---------- */
+.related-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,2vw,20px)}
+.related-tiles .citytile{aspect-ratio:4/3}
+.related-tiles .citytile-txt{padding:16px 18px}
+.related-tiles .citytile-txt b{font-size:1.3rem}
+.related-tiles .citytile-txt span{font-size:.8rem}
+@media(max-width:760px){.related-tiles{grid-template-columns:1fr}.related-tiles .citytile{aspect-ratio:16/10}}
+/* ---------- Homepage intro ---------- */
+.home-intro .lead + .lead{margin-top:1em}
