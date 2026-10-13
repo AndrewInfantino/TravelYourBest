@@ -41,6 +41,7 @@ const DESTS = [
   {n:'London',s:'England',u:'london.html'},
   {n:'Madagascar',s:'Morondava & the Avenue of the Baobabs',u:'madagascar.html'},
   {n:'Mauritius',s:'Le Morne, Chamarel & Île aux Cerfs',u:'mauritius.html'},
+  {n:'Prague',s:'Czech Republic: Old Town, Charles Bridge & the castle',u:'prague.html'},
   {n:'Mexico',s:'Cozumel & Costa Maya',u:'mexico.html'},
   {n:'Miami',s:'Miami & Fort Lauderdale · Florida',u:'miami.html'},
   {n:'Montreal',s:'Quebec, Canada',u:'montreal.html'},

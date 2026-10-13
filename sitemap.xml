@@ -3,7 +3,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://travelyourbest.com/</loc>
-    <lastmod>2026-10-08</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://travelyourbest.com/images/barcelona-park-guell-bench-couple.webp</image:loc>
@@ -2415,6 +2415,101 @@
     </image:image>
     <image:image>
       <image:loc>https://travelyourbest.com/images/mauritius-south-coast-waves-melody.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://travelyourbest.com/prague.html</loc>
+    <lastmod>2026-10-13</lastmod>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://travelyourbest.com/images/prague-couple-riverside-charles-bridge.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://travelyourbest.com/images/prague-andrew-astronomical-clock.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://travelyourbest.com/images/prague-andrew-riverside-wall.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://travelyourbest.com/images/prague-astronomical-clock-crowd.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://travelyourbest.com/images/prague-bridge-tower-charles-bridge.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://travelyourbest.com/images/prague-bridge-tower-looking-up.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://travelyourbest.com/images/prague-castle-from-below.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://travelyourbest.com/images/prague-castle-view-across-river.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://travelyourbest.com/images/prague-castle-vladislav-hall.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://travelyourbest.com/images/prague-charles-bridge-crucifix-statue.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://travelyourbest.com/images/prague-charles-bridge-old-town-tower-crowds.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://travelyourbest.com/images/prague-charles-bridge-towers-river.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://travelyourbest.com/images/prague-charles-bridge-view-from-tower.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://travelyourbest.com/images/prague-chimney-cake-melody.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://travelyourbest.com/images/prague-couple-astronomical-clock-show.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://travelyourbest.com/images/prague-couple-cobbled-street-tower.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://travelyourbest.com/images/prague-couple-old-town-square-palace.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://travelyourbest.com/images/prague-couple-street-snack.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://travelyourbest.com/images/prague-goulash-bread-bowl.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://travelyourbest.com/images/prague-old-town-cafe.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://travelyourbest.com/images/prague-old-town-hall-tower-night.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://travelyourbest.com/images/prague-old-town-red-roof-building.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://travelyourbest.com/images/prague-old-town-square-crowd.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://travelyourbest.com/images/prague-old-town-square-night-tyn-church.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://travelyourbest.com/images/prague-old-town-square-tyn-church.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://travelyourbest.com/images/prague-old-town-street.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://travelyourbest.com/images/prague-powder-tower-gate-melody.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://travelyourbest.com/images/prague-powder-tower.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://travelyourbest.com/images/prague-red-trams.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://travelyourbest.com/images/prague-st-vitus-cathedral-facade.webp</image:loc>
     </image:image>
   </url>
 </urlset>

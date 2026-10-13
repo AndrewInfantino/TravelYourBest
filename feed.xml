@@ -6,8 +6,16 @@
 <atom:link href="https://travelyourbest.com/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Honest travel guides, top things to do and the best photo spots, from Andrew &amp; Melody.</description>
 <language>en-us</language>
-<lastBuildDate>Thu, 08 Oct 2026 12:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 13 Oct 2026 12:00:00 GMT</lastBuildDate>
 <image><url>https://travelyourbest.com/favicon.png</url><title>Travel Your Best</title><link>https://travelyourbest.com/</link></image>
+<item>
+<title>Prague Travel Guide: Top Things to Do &amp; Best Photo Spots</title>
+<link>https://travelyourbest.com/prague.html</link>
+<description>Our Prague guide: the Astronomical Clock, Old Town Square, Charles Bridge, Prague Castle and St Vitus, plus goulash, chimney cakes and tram tips.</description>
+<guid isPermaLink="true">https://travelyourbest.com/prague.html</guid>
+<pubDate>Tue, 13 Oct 2026 12:00:00 GMT</pubDate>
+<media:content url="https://travelyourbest.com/images/prague-couple-riverside-charles-bridge.webp" medium="image"/>
+</item>
 <item>
 <title>Mauritius Travel Guide: Top Things to Do &amp; Best Photo Spots</title>
 <link>https://travelyourbest.com/mauritius.html</link>

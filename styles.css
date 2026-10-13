@@ -474,3 +474,7 @@ html.js .reveal.in{opacity:1;transform:none}
 @media(max-width:760px){.related-tiles{grid-template-columns:1fr}.related-tiles .citytile{aspect-ratio:16/10}}
 /* ---------- Homepage intro ---------- */
 .home-intro .lead + .lead{margin-top:1em}
+/* Free walking tour partner box (non-GYG) */
+.gyg.gyg-fwt{background:#1f6f78;box-shadow:0 14px 30px -12px rgba(31,111,120,.45)}
+.gyg.gyg-fwt .gyg-badge{color:#1f6f78}
+.gyg.gyg-fwt .gyg-btn{color:#1f6f78}
