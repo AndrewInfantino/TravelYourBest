@@ -2512,4 +2512,9 @@
       <image:loc>https://travelyourbest.com/images/prague-st-vitus-cathedral-facade.webp</image:loc>
     </image:image>
   </url>
+  <url>
+    <loc>https://travelyourbest.com/products.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <priority>0.6</priority>
+  </url>
 </urlset>
