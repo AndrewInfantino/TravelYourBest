@@ -248,3 +248,20 @@ document.addEventListener('click', e => {
   attachAjax(document.getElementById('contactForm'),
     "<strong>Message sent! ✅</strong> Thanks for reaching out — we'll get back to you as soon as we can.", 'Sending…');
 })();
+
+// Destinations dropdown: filter links as you type (desktop)
+document.querySelectorAll('.dropdown').forEach(dd => {
+  const input = dd.querySelector('.dd-search input');
+  if(!input) return;
+  const links = [...dd.querySelectorAll(':scope > a')];
+  const none = document.createElement('div'); none.className = 'dd-none'; none.textContent = 'No destination found'; none.hidden = true; dd.appendChild(none);
+  input.addEventListener('input', () => {
+    const q = input.value.trim().toLowerCase(); let shown = 0;
+    links.forEach(a => { const ok = !q || a.textContent.toLowerCase().includes(q); a.style.display = ok ? '' : 'none'; if(ok) shown++; });
+    none.hidden = shown > 0;
+  });
+  input.addEventListener('keydown', e => {
+    if(e.key === 'Enter'){ const a = links.find(l => l.style.display !== 'none'); if(a){ e.preventDefault(); window.location.href = a.getAttribute('href'); } }
+    else if(e.key === 'Escape'){ input.value = ''; input.dispatchEvent(new Event('input')); input.blur(); }
+  });
+});
