@@ -80,6 +80,12 @@
 .pr-amz{display:inline-flex;align-items:center;gap:8px;background:#ff9900;color:#111;font-weight:700;padding:13px 22px;border-radius:999px;text-decoration:none;white-space:nowrap}
 .pr-amz:hover{background:#f08c00}
 @media (max-width:640px){.pr-feature{grid-template-columns:1fr}.pr-amz{justify-self:start}}
+.pr-feature + .pr-feature{margin-top:calc(-1 * clamp(24px,4vw,44px))}
+.pr-code{display:inline-flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:14px;padding:8px 8px 8px 14px;border:1.5px dashed #409cd1;border-radius:12px;background:#fff}
+.pr-code span{font-size:.82rem;color:var(--ink-soft)}
+.pr-code b{font-family:ui-monospace,Menlo,monospace;letter-spacing:.04em;font-size:.98rem;color:var(--ink)}
+.pr-copy{font:inherit;font-size:.8rem;font-weight:700;border:0;border-radius:8px;padding:6px 12px;background:#409cd1;color:#fff;cursor:pointer}
+.pr-amz--blue{background:#409cd1;color:#fff}.pr-amz--blue:hover{background:#2c86bd}
 </style>
 </head>
 <body>
@@ -169,7 +175,7 @@
       <p class="eyebrow">Travel gear</p>
       <h1 class="h-sec">Products we recommend</h1>
       <p class="lead">The travel gear we recommend on Amazon: the things that make packing easier, flights comfier and photos better on every trip.</p>
-      <p class="pr-disclose">As an Amazon Associate we earn from qualifying purchases, at no extra cost to you.</p>
+      <p class="pr-disclose">As an Amazon Associate we earn from qualifying purchases. Some other links are also affiliate links. Either way, it costs you nothing extra.</p>
     </div>
 
     <div class="pr-feature reveal">
@@ -180,6 +186,17 @@
         <p>This has been a lifesaver for taking photos of the two of us. So many of the couple shots in our guides were taken with it.</p>
       </div>
       <a class="pr-amz" href="https://www.amazon.es/dp/B09XHZ8F7F?tag=travelyourbest-21" target="_blank" rel="sponsored nofollow noopener">View on Amazon →</a>
+    </div>
+
+    <div class="pr-feature pr-esim reveal">
+      <span class="pr-ico" style="background:#e6f1f8" aria-hidden="true">📶</span>
+      <div>
+        <span class="pr-kick">The eSIM we use</span>
+        <h2>Roamless eSIM</h2>
+        <p>Our go-to way to stay connected abroad: data that works the moment you land, without hunting for a local SIM card.</p>
+        <div class="pr-code"><span>Use our code</span><b>TRAVELYOURBEST15</b><button type="button" class="pr-copy" data-code="TRAVELYOURBEST15">Copy</button></div>
+      </div>
+      <a class="pr-amz pr-amz--blue" href="https://www.roamless.com" target="_blank" rel="sponsored noopener">Get Roamless →</a>
     </div>
 
     <div class="pr-cat">
@@ -268,6 +285,12 @@
           <h3>Repel Windproof Folding Umbrella</h3>
           <p>Compact and automatic; we learned in Prague to always pack one.</p>
           <span class="pr-go">View on Amazon →</span>
+        </a>
+        <a class="pr-card reveal" href="https://sandcloud.com/ANDREW4" target="_blank" rel="sponsored nofollow noopener">
+          <span class="pr-ico" style="background:#eaf3ea" aria-hidden="true">🧣</span>
+          <h3>Sandcloud Wearable Blanket</h3>
+          <p>A cosy blanket you can wear: perfect for chilly flights, cool evenings and beach sunsets.</p>
+          <span class="pr-go">View on Sandcloud →</span>
         </a>
       </div>
     </div>
@@ -374,5 +397,11 @@
 </footer>
 
 <script src="site.js"></script>
+<script>
+document.querySelectorAll('.pr-copy').forEach(b=>b.addEventListener('click',()=>{
+  const t=b.dataset.code;
+  (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>{b.textContent='Copied!';setTimeout(()=>b.textContent='Copy',1600)}).catch(()=>{b.textContent=t});
+}));
+</script>
 </body>
 </html>

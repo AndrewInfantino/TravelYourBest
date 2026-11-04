@@ -78,6 +78,13 @@
 .res-go{font-size:.88rem;font-weight:650;color:var(--accent-ink)}
 .res-card:hover .res-go{text-decoration:underline}
 @media (max-width:640px){.res-feature{grid-template-columns:1fr;text-align:left}.res-feature .btn{justify-self:start}}
+.res-actions{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.res-sub-link{font-size:.88rem;font-weight:650;color:var(--accent-ink);text-decoration:none}
+.res-sub-link:hover{text-decoration:underline}
+.res-feature--read{background:#eef6f6;border-color:#cfe3e4}
+.res-listed{margin:clamp(20px,3vw,28px) 0 0;color:var(--ink-soft);font-size:.92rem}
+.res-listed a{color:var(--accent-ink);font-weight:650}
+@media (max-width:640px){.res-actions{justify-self:start}}
 </style>
 </head>
 <body>
@@ -179,6 +186,19 @@
       <a class="btn btn-primary" href="https://www.getyourguide.com/?partner_id=ROCHL4W&utm_medium=online_publisher" target="_blank" rel="sponsored noopener">Browse tours <span class="arrow">→</span></a>
     </div>
 
+    <div class="res-feature res-feature--read reveal">
+      <span class="res-logo" style="background:#1f6f78"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="17" r="3"/><circle cx="18" cy="17" r="3"/><path d="M9 17h6l-2-7h3"/><path d="M6 17l3-6h3"/></svg></span>
+      <div>
+        <span class="res-kicker">Featured read · The Travel Author</span>
+        <h2>The Balearic Islands by Vespa</h2>
+        <p>A brilliant read if you're planning a trip to Ibiza, Mallorca or Menorca: exploring the Balearic Islands on two wheels, with the freedom to reach hidden coves and quiet villages at your own pace. Pair it with our own Balearic Islands guide.</p>
+      </div>
+      <div class="res-actions">
+        <a class="btn btn-primary" href="https://thetravelauthor.com/balearic-islands-by-vespa/" target="_blank" rel="noopener">Read the article <span class="arrow">→</span></a>
+        <a class="res-sub-link" href="balearic-islands.html">Our Balearic Islands guide →</a>
+      </div>
+    </div>
+
     <div class="res-sub reveal">
       <h2>Travel directories</h2>
       <span>Where you can find us</span>
@@ -212,7 +232,7 @@
         <span class="res-url">travelmagazine.co</span>
         <span class="res-go">Visit →</span>
       </a>
-      <a class="res-card reveal" href="https://travelnotes.org/" target="_blank" rel="noopener">
+      <a class="res-card reveal" href="https://travelnotes.org" target="_blank" rel="noopener">
         <span class="res-mono" style="background:#6b7a3a">TN</span>
         <h3>Travel Notes</h3>
         <p>One of the web's longest-running travel resources and directories.</p>
@@ -220,6 +240,8 @@
         <span class="res-go">Visit →</span>
       </a>
     </div>
+
+    <p class="res-listed reveal">We're proud to be listed on <a href="https://travelnotes.org">Travel Notes</a>.</p>
   </div>
 </section>
 
