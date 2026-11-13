@@ -87,6 +87,11 @@
 .res-listed{margin:clamp(20px,3vw,28px) 0 0;color:var(--ink-soft);font-size:.92rem}
 .res-listed a{color:var(--accent-ink);font-weight:650}
 @media (max-width:640px){.res-actions{justify-self:start}}
+.res-feature + .res-feature{margin-top:calc(-1 * clamp(18px,3vw,32px))}
+.res-code{display:inline-flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:14px;padding:8px 8px 8px 14px;border:1.5px dashed var(--accent);border-radius:12px;background:#fff}
+.res-code span{font-size:.82rem;color:var(--ink-soft)}
+.res-code b{font-family:ui-monospace,Menlo,monospace;letter-spacing:.03em;font-size:.95rem;color:var(--ink)}
+.res-copy{font:inherit;font-size:.8rem;font-weight:700;border:0;border-radius:8px;padding:6px 12px;background:var(--accent);color:#fff;cursor:pointer}
 </style>
 </head>
 <body>
@@ -186,6 +191,17 @@
         <p>Almost every tour and ticket in our guides is booked through GetYourGuide: free cancellation on most experiences, skip-the-line tickets and local guides worldwide.</p>
       </div>
       <a class="btn btn-primary" href="https://www.getyourguide.com/?partner_id=ROCHL4W&utm_medium=online_publisher" target="_blank" rel="sponsored noopener">Browse tours <span class="arrow">→</span></a>
+    </div>
+
+    <div class="res-feature res-feature--cz reveal">
+      <span class="res-logo" style="background:#17140f"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="6" width="14" height="15" rx="3"/><path d="M9 6V4.5A1.5 1.5 0 0 1 10.5 3h3A1.5 1.5 0 0 1 15 4.5V6"/><path d="M5 11h14"/></svg></span>
+      <div>
+        <span class="res-kicker">Our luggage partner</span>
+        <h2>CabinZero Bags &amp; Luggage</h2>
+        <p>Cabin bags and luggage made for travelling light, so you can carry on, skip the baggage carousel and get exploring sooner.</p>
+        <div class="res-code"><span>15% off with code</span><b>ANDREWLOVESMELODY</b><button type="button" class="res-copy" data-code="ANDREWLOVESMELODY">Copy</button></div>
+      </div>
+      <a class="btn btn-primary" href="https://www.cabinzero.com/ANDREWLOVESMELODY" target="_blank" rel="sponsored noopener">Shop CabinZero <span class="arrow">→</span></a>
     </div>
 
     <div class="res-feature res-feature--read reveal">
@@ -335,5 +351,8 @@
 </footer>
 
 <script src="site.js"></script>
+<script>
+document.querySelectorAll('.res-copy').forEach(b=>b.addEventListener('click',()=>{const t=b.dataset.code;(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>{b.textContent='Copied!';setTimeout(()=>b.textContent='Copy',1600)}).catch(()=>{b.textContent=t})}));
+</script>
 </body>
 </html>
