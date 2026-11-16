@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+<urlset xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://travelyourbest.com/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://travelyourbest.com/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://travelyourbest.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://travelyourbest.com/"/>
     <lastmod>2026-10-13</lastmod>
     <priority>1.0</priority>
     <image:image>
@@ -98,6 +101,9 @@
   </url>
   <url>
     <loc>https://travelyourbest.com/barcelona.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://travelyourbest.com/barcelona.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://travelyourbest.com/es/barcelona.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://travelyourbest.com/barcelona.html"/>
     <lastmod>2026-10-08</lastmod>
     <priority>0.9</priority>
     <image:image>
@@ -1347,6 +1353,9 @@
   </url>
   <url>
     <loc>https://travelyourbest.com/lanzarote.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://travelyourbest.com/lanzarote.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://travelyourbest.com/es/lanzarote.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://travelyourbest.com/lanzarote.html"/>
     <lastmod>2026-10-08</lastmod>
     <priority>0.9</priority>
     <image:image>
@@ -1545,6 +1554,9 @@
   </url>
   <url>
     <loc>https://travelyourbest.com/balearic-islands.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://travelyourbest.com/balearic-islands.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://travelyourbest.com/es/balearic-islands.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://travelyourbest.com/balearic-islands.html"/>
     <lastmod>2026-10-08</lastmod>
     <priority>0.9</priority>
     <image:image>
@@ -2311,6 +2323,9 @@
   </url>
   <url>
     <loc>https://travelyourbest.com/about.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://travelyourbest.com/about.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://travelyourbest.com/es/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://travelyourbest.com/about.html"/>
     <lastmod>2026-10-08</lastmod>
     <priority>0.5</priority>
     <image:image>
@@ -2516,5 +2531,45 @@
     <loc>https://travelyourbest.com/products.html</loc>
     <lastmod>2026-10-14</lastmod>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://travelyourbest.com/es/</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://travelyourbest.com/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://travelyourbest.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://travelyourbest.com/"/>
+  </url>
+  <url>
+    <loc>https://travelyourbest.com/es/about.html</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://travelyourbest.com/about.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://travelyourbest.com/es/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://travelyourbest.com/about.html"/>
+  </url>
+  <url>
+    <loc>https://travelyourbest.com/es/barcelona.html</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://travelyourbest.com/barcelona.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://travelyourbest.com/es/barcelona.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://travelyourbest.com/barcelona.html"/>
+  </url>
+  <url>
+    <loc>https://travelyourbest.com/es/balearic-islands.html</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://travelyourbest.com/balearic-islands.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://travelyourbest.com/es/balearic-islands.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://travelyourbest.com/balearic-islands.html"/>
+  </url>
+  <url>
+    <loc>https://travelyourbest.com/es/lanzarote.html</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://travelyourbest.com/lanzarote.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://travelyourbest.com/es/lanzarote.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://travelyourbest.com/lanzarote.html"/>
   </url>
 </urlset>

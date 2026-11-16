@@ -1,3 +1,19 @@
+// ---------- Language (EN default, ES) ----------
+// Pages with a hand-translated Spanish twin live in /es/. Every other page is machine-translated on request.
+const TYB_TWINS = ['index.html','about.html','barcelona.html','balearic-islands.html','lanzarote.html'];
+const TYB_ES = /\/es(\/|$)/.test(location.pathname);
+const TYB_SEG = location.pathname.split('/').pop();
+const TYB_FILE = (TYB_SEG || 'index.html').replace(/^([^.]+)$/, '$1.html');
+const TYB_HAS_TWIN = TYB_TWINS.includes(TYB_FILE);
+function tybUrl(u){ // resolve a root-relative page link from inside /es/
+  if(!TYB_ES) return u;
+  return TYB_TWINS.includes(u.split('#')[0]) ? u : '../' + u;
+}
+const ES_NAMES = {'Amsterdam':'Ámsterdam','Athens':'Atenas','Balearic Islands':'Islas Baleares','Beijing':'Pekín','Cairo':'El Cairo','Cappadocia':'Capadocia','Dominican Republic':'República Dominicana','Florence':'Florencia','Israel & Palestine':'Israel y Palestina','Istanbul':'Estambul','Japan':'Japón','Lake Como':'Lago de Como','London':'Londres','Mauritius':'Mauricio','Mexico':'México','Morocco':'Marruecos','Positano & Capri':'Positano y Capri','Prague':'Praga','Sicily':'Sicilia','Singapore':'Singapur','Strasbourg & Alsace':'Estrasburgo y Alsacia','Thailand':'Tailandia','Tunis':'Túnez','Venice':'Venecia'};
+function tybName(n){ return TYB_ES ? (ES_NAMES[n] || n) : n; }
+const ES_SUBS = {"Netherlands": "Países Bajos", "Greece": "Grecia", "Ibiza, Menorca & Mallorca · Spain": "Ibiza, Menorca y Mallorca · España", "Spain": "España", "Egypt": "Egipto", "Turkey": "Turquía", "Punta Cana, Samaná & more": "Punta Cana, Samaná y más", "Croatia": "Croacia", "Bologna, Pisa & Italy": "Bolonia, Pisa e Italia", "Jerusalem, Bethlehem & Tel Aviv": "Jerusalén, Belén y Tel Aviv", "Osaka, Kyoto & Tokyo": "Osaka, Kioto y Tokio", "Italy": "Italia", "Canary Islands · Spain": "Islas Canarias · España", "England": "Inglaterra", "Morondava & the Avenue of the Baobabs": "Morondava y la Avenida de los Baobabs", "Le Morne, Chamarel & Île aux Cerfs": "Le Morne, Chamarel e Île aux Cerfs", "Czech Republic: Old Town, Charles Bridge & the castle": "República Checa: Ciudad Vieja, Puente de Carlos y el castillo", "Cozumel & Costa Maya": "Cozumel y Costa Maya", "Miami & Fort Lauderdale · Florida": "Miami y Fort Lauderdale · Florida", "Quebec, Canada": "Quebec, Canadá", "Marrakesh, Sahara & more": "Marrakech, el Sáhara y más", "Amalfi Coast · Italy": "Costa Amalfitana · Italia", "Mahé, Praslin & La Digue": "Mahé, Praslin y La Digue", "Palermo & Mondello · Italy": "Palermo y Mondello · Italia", "Singapore": "Singapur", "France": "Francia", "Bangkok & Phuket": "Bangkok y Phuket", "Tunisia": "Túnez", "Burano, Murano & Italy": "Burano, Murano e Italia", "Hanoi & Ninh Binh": "Hanói y Ninh Binh"};
+function tybSub(t){ return TYB_ES ? (ES_SUBS[t] || t) : t; }
+
 // Mark that JS is active. The hidden/animated state of .reveal is scoped to html.js,
 // so if this script is ever blocked, all content simply renders fully visible.
 document.documentElement.classList.add('js');
@@ -65,12 +81,12 @@ function initDesSearch(root){
     const q = input.value.trim().toLowerCase();
     list.innerHTML = '';
     if(!q){ list.classList.remove('open'); return; }
-    const m = DESTS.filter(d => (d.n+' '+d.s).toLowerCase().includes(q)).slice(0,8);
-    if(!m.length){ list.innerHTML = '<li class="dessearch-none">No destination found</li>'; list.classList.add('open'); return; }
+    const m = DESTS.filter(d => (d.n+' '+(ES_NAMES[d.n]||'')+' '+d.s+' '+(ES_SUBS[d.s]||'')).toLowerCase().includes(q)).slice(0,8);
+    if(!m.length){ list.innerHTML = '<li class="dessearch-none">'+(TYB_ES?'No se encontró ningún destino':'No destination found')+'</li>'; list.classList.add('open'); return; }
     m.forEach(d => {
       const li = document.createElement('li');
       const a = document.createElement('a');
-      a.href = d.u; a.innerHTML = '<b>'+d.n+'</b><span>'+d.s+'</span>';
+      a.href = tybUrl(d.u); a.innerHTML = '<b>'+tybName(d.n)+'</b><span>'+tybSub(d.s)+'</span>';
       li.appendChild(a); list.appendChild(li);
     });
     list.classList.add('open');
@@ -254,7 +270,7 @@ document.querySelectorAll('.dropdown').forEach(dd => {
   const input = dd.querySelector('.dd-search input');
   if(!input) return;
   const links = [...dd.querySelectorAll(':scope > a')];
-  const none = document.createElement('div'); none.className = 'dd-none'; none.textContent = 'No destination found'; none.hidden = true; dd.appendChild(none);
+  const none = document.createElement('div'); none.className = 'dd-none'; none.textContent = TYB_ES ? 'No se encontró ningún destino' : 'No destination found'; none.hidden = true; dd.appendChild(none);
   input.addEventListener('input', () => {
     const q = input.value.trim().toLowerCase(); let shown = 0;
     links.forEach(a => { const ok = !q || a.textContent.toLowerCase().includes(q); a.style.display = ok ? '' : 'none'; if(ok) shown++; });
@@ -265,3 +281,63 @@ document.querySelectorAll('.dropdown').forEach(dd => {
     else if(e.key === 'Escape'){ input.value = ''; input.dispatchEvent(new Event('input')); input.blur(); }
   });
 });
+
+
+// ---------- Language toggle ----------
+(function(){
+  const KEY = 'tyb-lang';
+  const get = () => { try { return localStorage.getItem(KEY); } catch(e){ return null; } };
+  const set = v => { try { localStorage.setItem(KEY, v); } catch(e){} };
+  if (TYB_ES) set('es');
+  const pref = TYB_ES ? 'es' : (get() || 'en');
+  const host = location.hostname;
+  function setGoogTrans(val){
+    const exp = val ? '' : ';expires=Thu, 01 Jan 1970 00:00:00 GMT';
+    const v = val || '';
+    document.cookie = 'googtrans=' + v + ';path=/' + exp;
+    if (host && host.indexOf('.') > -1) {
+      document.cookie = 'googtrans=' + v + ';path=/;domain=' + host + exp;
+      document.cookie = 'googtrans=' + v + ';path=/;domain=.' + host.replace(/^www\./,'') + exp;
+    }
+  }
+  function autoTranslate(){
+    if (window.__tybTranslating) return; window.__tybTranslating = true;
+    setGoogTrans('/en/es');
+    document.documentElement.classList.add('tyb-mt');
+    const holder = document.createElement('div'); holder.id = 'google_translate_element'; holder.style.display = 'none';
+    document.body.appendChild(holder);
+    window.googleTranslateElementInit = function(){
+      new google.translate.TranslateElement({pageLanguage:'en', includedLanguages:'es', autoDisplay:false}, 'google_translate_element');
+    };
+    const sc = document.createElement('script');
+    sc.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    sc.async = true; document.head.appendChild(sc);
+  }
+  function mark(lang){
+    document.querySelectorAll('.langtoggle button').forEach(b => {
+      const on = b.dataset.lang === lang;
+      b.classList.toggle('on', on); b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+  }
+  mark(pref);
+  if (TYB_ES) {
+    setGoogTrans(null); // hand-translated page: never machine-translate it
+  } else if (pref === 'es' && !TYB_HAS_TWIN) {
+    autoTranslate();
+  } else if (pref === 'en') {
+    setGoogTrans(null);
+  }
+  document.querySelectorAll('.langtoggle button').forEach(b => b.addEventListener('click', () => {
+    const lang = b.dataset.lang;
+    set(lang); mark(lang);
+    if (lang === 'es') {
+      if (TYB_ES) return;                                                     // already the Spanish page
+      if (TYB_HAS_TWIN) { location.href = 'es/' + TYB_SEG + location.hash; return; } // hand-translated twin
+      autoTranslate();                                                        // machine-translate this page
+    } else {
+      setGoogTrans(null);
+      if (TYB_ES) { location.href = '../' + TYB_SEG + location.hash; return; } // back to the English twin
+      if (window.__tybTranslating) location.reload();                         // undo machine translation
+    }
+  }));
+})();
