@@ -93,6 +93,16 @@
 .res-code span{font-size:.82rem;color:var(--ink-soft)}
 .res-code b{font-family:ui-monospace,Menlo,monospace;letter-spacing:.03em;font-size:.95rem;color:var(--ink)}
 .res-copy{font:inherit;font-size:.8rem;font-weight:700;border:0;border-radius:8px;padding:6px 12px;background:var(--accent);color:#fff;cursor:pointer}
+.res-sub--guest{margin-top:clamp(32px,5vw,48px)}
+.res-guest{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(12px,2vw,16px);max-width:760px}
+.res-mini{display:flex;align-items:center;gap:14px;padding:14px 16px;border:1px solid var(--hair);border-radius:14px;background:var(--paper);color:var(--ink);text-decoration:none;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.res-mini:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:transparent}
+.res-mono--sm{width:40px;height:40px;border-radius:11px;font-size:.92rem;flex:none}
+.res-mini-txt{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.res-mini-txt b{font-size:.98rem;font-weight:650}
+.res-mini-txt span{font-size:.84rem;color:var(--ink-soft)}
+.res-mini .res-go{flex:none;font-size:.84rem}
+@media(max-width:560px){.res-guest{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -278,9 +288,27 @@
       </a>
     </div>
 
+
+    <div class="res-sub res-sub--guest reveal">
+      <h2>Our guest guides</h2>
+      <span>Where else you can read us</span>
+    </div>
+    <div class="res-guest">
+      <a class="res-mini reveal" href="https://traveliyo.com/" target="_blank" rel="noopener">
+        <span class="res-mono res-mono--sm" style="background:#3b7a5a">TR</span>
+        <span class="res-mini-txt"><b>Traveliyo</b><span>Guest travel guides by us</span></span>
+        <span class="res-go">Read →</span>
+      </a>
+      <a class="res-mini reveal" href="https://picturo.eu/blog?p=positano-and-capri-slowly-as-a-couple" target="_blank" rel="noopener">
+        <span class="res-mono res-mono--sm" style="background:#a0522d">PI</span>
+        <span class="res-mini-txt"><b>Picturo</b><span>Positano &amp; Capri, slowly, as a couple</span></span>
+        <span class="res-go">Read →</span>
+      </a>
+    </div>
+
     <p class="res-listed reveal">We're proud to be listed on <a href="https://travelnotes.org">Travel Notes</a>.</p>
     <p class="res-listed reveal">We are also listed in <a href="https://www.thetravelwire.net/">The Travel Wire</a> newsletter directory.</p>
-    <p class="res-listed reveal">We also write guest guides for other travel sites, including <a href="https://traveliyo.com/">Traveliyo</a>.</p>
+    <p class="res-listed reveal">We also write guest guides for other travel sites, including <a href="https://traveliyo.com/">Traveliyo</a> and <a href="https://picturo.eu/blog?p=positano-and-capri-slowly-as-a-couple">Picturo</a>.</p>
   </div>
 </section>
 
