@@ -95,7 +95,8 @@
 .res-code b{font-family:ui-monospace,Menlo,monospace;letter-spacing:.03em;font-size:.95rem;color:var(--ink)}
 .res-copy{font:inherit;font-size:.8rem;font-weight:700;border:0;border-radius:8px;padding:6px 12px;background:var(--accent);color:#fff;cursor:pointer}
 .res-sub--guest{margin-top:clamp(32px,5vw,48px)}
-.res-guest{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(12px,2vw,16px);max-width:760px}
+.res-guest{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,2vw,16px)}
+@media(max-width:900px){.res-guest{grid-template-columns:repeat(2,1fr)}}
 .res-mini{display:flex;align-items:center;gap:14px;padding:14px 16px;border:1px solid var(--hair);border-radius:14px;background:var(--paper);color:var(--ink);text-decoration:none;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
 .res-mini:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:transparent}
 .res-mono--sm{width:40px;height:40px;border-radius:11px;font-size:.92rem;flex:none}
@@ -227,19 +228,6 @@
       <a class="btn btn-primary" href="https://xeroshoes.com/?utm_source=4758778&amp;utm_medium=Rak_Affiliate&amp;utm_campaign=TravelYourBest&amp;utm_keyword=JmE5s_UPYc0-.b_GZP9d208j2_Y528lCmQ&amp;ranMID=54010&amp;ranEAID=JmE5s%2FUPYc0&amp;ranSiteID=JmE5s_UPYc0-.b_GZP9d208j2_Y528lCmQ" target="_blank" rel="sponsored noopener">Shop Xero Shoes <span class="arrow">→</span></a>
     </div>
 
-    <div class="res-feature res-feature--read reveal">
-      <span class="res-logo" style="background:#1f6f78"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="17" r="3"/><circle cx="18" cy="17" r="3"/><path d="M9 17h6l-2-7h3"/><path d="M6 17l3-6h3"/></svg></span>
-      <div>
-        <span class="res-kicker">Featured read · The Travel Author</span>
-        <h2>The Balearic Islands by Vespa</h2>
-        <p>A brilliant read if you're planning a trip to Ibiza, Mallorca or Menorca: exploring the Balearic Islands on two wheels, with the freedom to reach hidden coves and quiet villages at your own pace. Pair it with our own Balearic Islands guide.</p>
-      </div>
-      <div class="res-actions">
-        <a class="btn btn-primary" href="https://thetravelauthor.com/balearic-islands-by-vespa/" target="_blank" rel="noopener">Read the article <span class="arrow">→</span></a>
-        <a class="res-sub-link" href="balearic-islands.html">Our Balearic Islands guide →</a>
-      </div>
-    </div>
-
     <div class="res-sub reveal">
       <h2>Travel directories</h2>
       <span>Where you can find us</span>
@@ -289,13 +277,12 @@
       </a>
       <a class="res-card reveal" href="https://www.travellistings.org/" target="_blank" rel="noopener">
         <span class="res-mono" style="background:#2f6f9f">TL</span>
-        <h3>TravelListings.org</h3>
+        <h3>Travel Listings</h3>
         <p>A travel directory listing travel blogs and resources where you can find us.</p>
         <span class="res-url">travellistings.org</span>
         <span class="res-go">Visit →</span>
       </a>
     </div>
-
 
     <div class="res-sub res-sub--guest reveal">
       <h2>Our guest guides</h2>
@@ -310,6 +297,11 @@
       <a class="res-mini reveal" href="https://picturo.eu/blog?p=positano-and-capri-slowly-as-a-couple" target="_blank" rel="noopener">
         <span class="res-mono res-mono--sm" style="background:#a0522d">PI</span>
         <span class="res-mini-txt"><b>Picturo</b><span>Positano &amp; Capri, slowly, as a couple</span></span>
+        <span class="res-go">Read →</span>
+      </a>
+      <a class="res-mini reveal" href="https://thetravelauthor.com/balearic-islands-by-vespa/" target="_blank" rel="noopener">
+        <span class="res-mono res-mono--sm" style="background:#1f6f78">TA</span>
+        <span class="res-mini-txt"><b>The Travel Author</b><span>The Balearic Islands by Vespa</span></span>
         <span class="res-go">Read →</span>
       </a>
     </div>

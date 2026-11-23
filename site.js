@@ -1,6 +1,6 @@
 // ---------- Language (EN default, ES) ----------
 // Pages with a hand-translated Spanish twin live in /es/. Every other page is machine-translated on request.
-const TYB_TWINS = ['index.html','about.html','barcelona.html','balearic-islands.html','lanzarote.html'];
+const TYB_TWINS = ['index.html','about.html','barcelona.html','balearic-islands.html','lanzarote.html','dominican-republic.html','mexico.html'];
 const TYB_ES = /\/es(\/|$)/.test(location.pathname);
 const TYB_SEG = location.pathname.split('/').pop();
 const TYB_FILE = (TYB_SEG || 'index.html').replace(/^([^.]+)$/, '$1.html');
@@ -149,30 +149,41 @@ document.addEventListener('click', e => {
   const MAPW=1000, MAPH=500, MINW=90;                 // MINW = max zoom (smaller = closer)
   const pins = Array.from(pinsWrap.querySelectorAll('.tybpin'));
   let vb={x:0,y:0,w:MAPW,h:MAPH};
+  const AR=()=>{ const r=map.getBoundingClientRect(); return (r.width&&r.height)? r.width/r.height : 2; };
+  const maxW=()=>Math.min(MAPW, MAPH*AR());          // widest view that still fills the box (no empty bands)
+  const xs=pins.map(p=>+p.dataset.x), ys=pins.map(p=>+p.dataset.y);
+  const midX=(Math.min(...xs)+Math.max(...xs))/2, midY=(Math.min(...ys)+Math.max(...ys))/2;
+  function home(){ const w=maxW(); vb={x:midX-w/2, y:midY-(w/AR())/2, w, h:w/AR()}; } // whole world, or centred on our pins on tall/narrow screens
 
   function clamp(){
-    vb.w=Math.min(MAPW,Math.max(MINW,vb.w)); vb.h=vb.w/2;
+    const ar=AR();
+    vb.w=Math.min(maxW(),Math.max(MINW,vb.w)); vb.h=vb.w/ar;
     vb.x=Math.min(MAPW-vb.w,Math.max(0,vb.x));
     vb.y=Math.min(MAPH-vb.h,Math.max(0,vb.y));
+  }
+  function fit(){ // screen scale of the current view (view and box share the same shape, so no offsets)
+    const rect=map.getBoundingClientRect();
+    return {rect, k:rect.width/vb.w, ox:0, oy:0};
   }
   function apply(){
     clamp();
     svg.setAttribute('viewBox',`${vb.x} ${vb.y} ${vb.w} ${vb.h}`);
-    const rect=map.getBoundingClientRect();
+    svg.setAttribute('preserveAspectRatio','none');
+    const {rect,k}=fit();
     pins.forEach(p=>{
       const px=parseFloat(p.dataset.x), py=parseFloat(p.dataset.y);
-      const sx=(px-vb.x)/vb.w*rect.width, sy=(py-vb.y)/vb.h*rect.height;
+      const sx=(px-vb.x)*k, sy=(py-vb.y)*k;
       const on = sx>=-20 && sx<=rect.width+20 && sy>=-20 && sy<=rect.height+20;
       p.style.display = on ? '' : 'none';
       p.style.left=sx+'px'; p.style.top=sy+'px';
     });
   }
   function zoomAt(factor, cx, cy){
-    const rect=map.getBoundingClientRect();
-    const relx=(cx-rect.left)/rect.width, rely=(cy-rect.top)/rect.height;
-    const wx=vb.x+relx*vb.w, wy=vb.y+rely*vb.h;
-    vb.w*=factor; vb.h=vb.w/2;
-    vb.x=wx-relx*vb.w; vb.y=wy-rely*vb.h;
+    const {rect,k}=fit();
+    const wx=vb.x+(cx-rect.left)/k, wy=vb.y+(cy-rect.top)/k;     // map point under the finger/cursor
+    vb.w=Math.min(maxW(),Math.max(MINW,vb.w*factor)); vb.h=vb.w/AR();
+    const k2=rect.width/vb.w;
+    vb.x=wx-(cx-rect.left)/k2; vb.y=wy-(cy-rect.top)/k2;
     apply();
   }
   // buttons
@@ -182,39 +193,61 @@ document.addEventListener('click', e => {
   function zoomBtn(factor){
     const rect=map.getBoundingClientRect();
     let fx=rect.left+rect.width/2, fy=rect.top+rect.height/2;
-    if(vb.w>=MAPW*0.98){ fx=rect.left+(cxAll-vb.x)/vb.w*rect.width; fy=rect.top+(cyAll-vb.y)/vb.h*rect.height; }
+    if(vb.w>=maxW()*0.98){ const f=fit(); fx=rect.left+(cxAll-vb.x)*f.k; fy=rect.top+(cyAll-vb.y)*f.k; }
     zoomAt(factor,fx,fy);
   }
   document.getElementById('tybmapIn').addEventListener('click',()=>zoomBtn(0.6));
   document.getElementById('tybmapOut').addEventListener('click',()=>zoomBtn(1/0.6));
-  document.getElementById('tybmapReset').addEventListener('click',()=>{vb={x:0,y:0,w:MAPW,h:MAPH};apply();});
+  document.getElementById('tybmapReset').addEventListener('click',()=>{home();apply();});
   // wheel zoom
   map.addEventListener('wheel',e=>{e.preventDefault();zoomAt(e.deltaY>0?1.15:0.87, e.clientX, e.clientY);},{passive:false});
-  // drag to pan (mouse + touch)
+  // drag to pan with the mouse
   let drag=null;
   function down(x,y){drag={x,y,vx:vb.x,vy:vb.y};map.classList.add('grabbing');}
   function move(x,y){
     if(!drag) return;
-    const rect=map.getBoundingClientRect();
-    vb.x=drag.vx-(x-drag.x)/rect.width*vb.w;
-    vb.y=drag.vy-(y-drag.y)/rect.height*vb.h;
+    const {k}=fit();
+    vb.x=drag.vx-(x-drag.x)/k;
+    vb.y=drag.vy-(y-drag.y)/k;
     apply();
   }
   function up(){drag=null;map.classList.remove('grabbing');}
   map.addEventListener('mousedown',e=>{down(e.clientX,e.clientY);});
   window.addEventListener('mousemove',e=>move(e.clientX,e.clientY));
   window.addEventListener('mouseup',up);
-  map.addEventListener('touchstart',e=>{if(e.touches.length===1)down(e.touches[0].clientX,e.touches[0].clientY);},{passive:true});
-  map.addEventListener('touchmove',e=>{if(drag&&e.touches.length===1){move(e.touches[0].clientX,e.touches[0].clientY);}},{passive:true});
-  map.addEventListener('touchend',up);
+  // touch: ONE finger scrolls the page as normal (the map stays still);
+  // TWO fingers move and pinch-zoom the map
+  let pinch=null;
+  const mid=t=>({x:(t[0].clientX+t[1].clientX)/2, y:(t[0].clientY+t[1].clientY)/2});
+  const dist=t=>Math.hypot(t[0].clientX-t[1].clientX, t[0].clientY-t[1].clientY);
+  map.addEventListener('touchstart',e=>{
+    if(e.touches.length===2){ const m=mid(e.touches); pinch={x:m.x,y:m.y,d:dist(e.touches)}; map.classList.add('grabbing'); }
+  },{passive:true});
+  map.addEventListener('touchmove',e=>{
+    if(!pinch||e.touches.length!==2) return;
+    e.preventDefault();
+    const m=mid(e.touches), d=dist(e.touches), {k}=fit();
+    vb.x-= (m.x-pinch.x)/k; vb.y-= (m.y-pinch.y)/k;               // pan with the two-finger midpoint
+    if(pinch.d>0 && d>0) zoomAt(pinch.d/d, m.x, m.y); else apply(); // pinch to zoom
+    pinch={x:m.x,y:m.y,d};
+  },{passive:false});
+  map.addEventListener('touchend',e=>{ if(e.touches.length<2){ pinch=null; map.classList.remove('grabbing'); } });
+  // touch screens get instructions that match
+  if(window.matchMedia && matchMedia('(pointer: coarse)').matches){
+    const sub=document.querySelector('.tybmap-sub');
+    if(sub) sub.textContent = (typeof TYB_ES!=='undefined' && TYB_ES)
+      ? 'Toca un pin para abrir esa guía. Usa + / − o dos dedos para hacer zoom y moverte por el mapa.'
+      : 'Tap a pin to open that guide. Use + / − or two fingers to zoom and move around the map.';
+  }
   // prevent a drag from triggering pin navigation
   pins.forEach(p=>{
     let sx,sy;
     p.addEventListener('mousedown',e=>{sx=e.clientX;sy=e.clientY;});
     p.addEventListener('click',e=>{ if(sx!=null && (Math.abs(e.clientX-sx)>6||Math.abs(e.clientY-sy)>6)) e.preventDefault(); });
   });
-  window.addEventListener('resize',apply);
-  apply();
+  let lastW=map.getBoundingClientRect().width;
+  window.addEventListener('resize',()=>{ const w=map.getBoundingClientRect().width; if(Math.abs(w-lastW)>1){ lastW=w; home(); apply(); } });
+  home(); apply();
 })();
 
 /* ---- Inline AJAX submit for FormSubmit forms (no redirect to FormSubmit page) ---- */
@@ -340,4 +373,107 @@ document.querySelectorAll('.dropdown').forEach(dd => {
       if (window.__tybTranslating) location.reload();                         // undo machine translation
     }
   }));
+})();
+
+
+// ---------- Motion & interaction layer ----------
+(function(){
+  const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const navEl = document.querySelector('.nav');
+  const root = document.documentElement;
+  const setNavH = () => { if(navEl) root.style.setProperty('--navh', navEl.offsetHeight + 'px'); };
+  setNavH(); window.addEventListener('resize', setNavH);
+
+  // reading progress bar on guide pages
+  const cover = document.querySelector('.cover');
+  let bar = null;
+  if (cover) { bar = document.createElement('div'); bar.className = 'tyb-progress'; bar.setAttribute('aria-hidden','true'); document.body.appendChild(bar); }
+
+  // back to top
+  const top = document.createElement('button');
+  top.type = 'button'; top.className = 'tyb-top';
+  top.setAttribute('aria-label', (typeof TYB_ES!=='undefined' && TYB_ES) ? 'Volver arriba' : 'Back to top');
+  top.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>';
+  top.addEventListener('click', () => window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }));
+  document.body.appendChild(top);
+
+  // sticky jump-to bar + active section
+  const cnav = document.querySelector('.citynav');
+  const coverImg = cover ? cover.querySelector('img') : null;
+  let ticking = false;
+  function onScroll(){
+    const y = window.scrollY, vh = window.innerHeight;
+    if (navEl) navEl.classList.toggle('is-scrolled', y > 8);
+    top.classList.toggle('show', y > vh * 1.2);
+    if (bar) { const max = document.documentElement.scrollHeight - vh; bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, y / max) : 0) + ')'; }
+    if (cnav) { const r = cnav.getBoundingClientRect(); cnav.classList.toggle('is-stuck', r.top <= (navEl ? navEl.offsetHeight : 0) + 1 && y > 50); }
+    if (coverImg && !reduce && window.innerWidth > 820) { coverImg.style.setProperty('--py', Math.min(40, y * 0.12) + 'px'); }
+    ticking = false;
+  }
+  window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  onScroll();
+
+  if (cnav && 'IntersectionObserver' in window) {
+    const links = [...cnav.querySelectorAll('a[href^="#"]')];
+    const targets = links.map(a => document.getElementById(a.getAttribute('href').slice(1))).filter(Boolean);
+    const setActive = id => {
+      links.forEach(a => {
+        const on = a.getAttribute('href') === '#' + id;
+        a.classList.toggle('is-active', on);
+        if (on && cnav.scrollWidth > cnav.clientWidth) cnav.scrollTo({ left: a.offsetLeft - 24, behavior: reduce ? 'auto' : 'smooth' });
+      });
+    };
+    const seen = new Map();
+    const spy = new IntersectionObserver(es => {
+      es.forEach(e => seen.set(e.target.id, e.isIntersecting ? e.boundingClientRect.top : null));
+      // active = the last section whose heading has passed the top third of the screen
+      let best = null;
+      targets.forEach(t => { if (t.getBoundingClientRect().top < window.innerHeight * 0.35) best = t.id; });
+      links.forEach(a => a.classList.remove('is-active'));
+      if (best) setActive(best);
+    }, { rootMargin: '0px 0px -60% 0px', threshold: [0, 1] });
+    targets.forEach(t => spy.observe(t));
+    window.addEventListener('scroll', () => {
+      let best = null;
+      targets.forEach(t => { if (t.getBoundingClientRect().top < window.innerHeight * 0.35) best = t.id; });
+      if (best) setActive(best); else links.forEach(a => a.classList.remove('is-active'));
+    }, { passive: true });
+  }
+
+  if (reduce) return;
+
+  // cascading grids
+  const groups = document.querySelectorAll('.citytiles, .gallery, .ig-grid, .related-tiles, .res-grid, .pr-grid, .res-guest, .reel');
+  if ('IntersectionObserver' in window && groups.length) {
+    const gio = new IntersectionObserver(es => es.forEach(e => {
+        if (!e.isIntersecting) return;
+        const g = e.target; g.classList.add('in'); gio.unobserve(g);
+        setTimeout(() => { [...g.children].forEach(c => c.style.setProperty('--sd','0s')); g.classList.add('tyb-done'); }, 1400); // hover effects respond instantly afterwards
+      }),
+      { threshold: 0.05, rootMargin: '0px 0px -6% 0px' });
+    groups.forEach(g => {
+      g.classList.remove('reveal');
+      [...g.children].forEach((c, i) => { c.classList.remove('reveal'); c.style.setProperty('--sd', Math.min(i % 10, 9) * 0.06 + 's'); });
+      g.classList.add('tyb-stagger');
+      gio.observe(g);
+    });
+  }
+
+  // map pins: staggered pulse
+  document.querySelectorAll('.tybpin-dot').forEach((d, i) => d.style.setProperty('--pd', ((i * 0.37) % 2.8).toFixed(2) + 's'));
+
+  // destination tiles: tilt + sheen (desktop pointers only)
+  if (window.matchMedia && matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    document.querySelectorAll('.citytile').forEach(t => {
+      t.addEventListener('pointermove', e => {
+        const r = t.getBoundingClientRect(), px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
+        t.style.setProperty('--ry', ((px - .5) * 10).toFixed(2) + 'deg');
+        t.style.setProperty('--rx', ((.5 - py) * 10).toFixed(2) + 'deg');
+        t.style.setProperty('--mx', (px * 100).toFixed(1) + '%');
+        t.style.setProperty('--my', (py * 100).toFixed(1) + '%');
+        t.classList.add('is-tilting');
+      });
+      t.addEventListener('pointerleave', () => { t.classList.remove('is-tilting'); t.style.setProperty('--rx','0deg'); t.style.setProperty('--ry','0deg'); });
+    });
+  }
 })();
