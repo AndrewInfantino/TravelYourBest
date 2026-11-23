@@ -443,7 +443,7 @@ document.querySelectorAll('.dropdown').forEach(dd => {
   if (reduce) return;
 
   // cascading grids
-  const groups = document.querySelectorAll('.citytiles, .gallery, .ig-grid, .related-tiles, .res-grid, .pr-grid, .res-guest, .reel');
+  const groups = document.querySelectorAll('.res-grid, .pr-grid, .res-guest');
   if ('IntersectionObserver' in window && groups.length) {
     const gio = new IntersectionObserver(es => es.forEach(e => {
         if (!e.isIntersecting) return;
@@ -462,18 +462,4 @@ document.querySelectorAll('.dropdown').forEach(dd => {
   // map pins: staggered pulse
   document.querySelectorAll('.tybpin-dot').forEach((d, i) => d.style.setProperty('--pd', ((i * 0.37) % 2.8).toFixed(2) + 's'));
 
-  // destination tiles: tilt + sheen (desktop pointers only)
-  if (window.matchMedia && matchMedia('(hover: hover) and (pointer: fine)').matches) {
-    document.querySelectorAll('.citytile').forEach(t => {
-      t.addEventListener('pointermove', e => {
-        const r = t.getBoundingClientRect(), px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
-        t.style.setProperty('--ry', ((px - .5) * 10).toFixed(2) + 'deg');
-        t.style.setProperty('--rx', ((.5 - py) * 10).toFixed(2) + 'deg');
-        t.style.setProperty('--mx', (px * 100).toFixed(1) + '%');
-        t.style.setProperty('--my', (py * 100).toFixed(1) + '%');
-        t.classList.add('is-tilting');
-      });
-      t.addEventListener('pointerleave', () => { t.classList.remove('is-tilting'); t.style.setProperty('--rx','0deg'); t.style.setProperty('--ry','0deg'); });
-    });
-  }
 })();

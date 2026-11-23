@@ -562,12 +562,6 @@ html.tyb-mt body{top:0!important;position:static!important}
   /* section eyebrow line draws in */
   html.js .section-head.reveal .eyebrow::before{width:0;transition:width .7s .25s cubic-bezier(.2,.7,.2,1)}
   html.js .section-head.reveal.in .eyebrow::before{width:26px}
-  /* spot photos wipe into view */
-  html.js .spot.reveal .spot-media img{clip-path:inset(0 0 100% 0 round 14px);transition:clip-path 1.1s cubic-bezier(.65,0,.25,1),transform .6s ease}
-  html.js .spot.reveal.in .spot-media img{clip-path:inset(0 0 0 0 round 0)}
-  html.js .spot.reveal.in .spot-media img:nth-child(2){transition-delay:.12s}
-  html.js .spot.reveal.in .spot-media img:nth-child(3){transition-delay:.24s}
-  html.js .spot.reveal.in .spot-media img:nth-child(4){transition-delay:.36s}
   /* cascading grids (JS adds .tyb-stagger + per-item delay) */
   html.js .tyb-stagger>*{opacity:0;transform:translateY(18px) scale(.98);transition:opacity .6s ease,transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:var(--sd,0s)}
   html.js .tyb-stagger.in>*{opacity:1;transform:none}
@@ -581,14 +575,4 @@ html.tyb-mt body{top:0!important;position:static!important}
   .btn-primary::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);
     transform:translateX(-120%);transition:transform .7s ease}
   .btn-primary:hover::after{transform:translateX(120%)}
-}
-/* destination tiles: 3D tilt + sheen on desktop (JS sets --rx/--ry/--mx/--my) */
-@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion: no-preference){
-  .citytiles,.related-tiles{perspective:900px}
-  html.js .tyb-stagger.in>.citytile,.citytile{transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateZ(0);transform-style:preserve-3d}
-  html.js .tyb-stagger.tyb-done>.citytile{transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s ease,opacity .6s ease}
-  html.js .tyb-stagger.tyb-done>.citytile.is-tilting,.citytile.is-tilting{transition:transform .08s linear,box-shadow .35s ease;box-shadow:0 26px 50px -24px rgba(30,20,10,.55)}
-  .citytile::before{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;opacity:0;transition:opacity .3s ease;
-    background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.32),transparent 55%)}
-  .citytile.is-tilting::before{opacity:1}
 }
