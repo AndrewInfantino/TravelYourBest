@@ -463,3 +463,33 @@ document.querySelectorAll('.dropdown').forEach(dd => {
   document.querySelectorAll('.tybpin-dot').forEach((d, i) => d.style.setProperty('--pd', ((i * 0.37) % 2.8).toFixed(2) + 's'));
 
 })();
+
+// ---------- Tile click: plane take-off + orange light burst, then open the guide ----------
+(function(){
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const PLANE = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>';
+  let leaving = false;
+  document.addEventListener('click', e => {
+    const t = e.target.closest('.citytiles .citytile, .related-tiles .citytile');
+    if (!t || leaving || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || t.target === '_blank') return;
+    e.preventDefault();
+    leaving = true;
+    const r = t.getBoundingClientRect();
+    const x = e.clientX || (r.left + r.width / 2), y = e.clientY || (r.top + r.height / 2);
+    const fx = document.createElement('div');
+    fx.className = 'tyb-takeoff'; fx.style.left = x + 'px'; fx.style.top = y + 'px';
+    let rays = '';
+    for (let i = 0; i < 10; i++) rays += '<span class="tko-ray" style="--a:' + (i * 36) + 'deg"></span>';
+    fx.innerHTML = '<span class="tko-burst"></span><span class="tko-ring"></span>' + rays + '<span class="tko-trail"></span><span class="tko-plane">' + PLANE + '</span>';
+    document.body.appendChild(fx);
+    t.classList.add('tko-press');
+    const go = t.href;
+    setTimeout(() => { window.location.href = go; }, 650);
+  });
+  // coming back with the browser's Back button: clear any leftover effect
+  window.addEventListener('pageshow', () => {
+    leaving = false;
+    document.querySelectorAll('.tyb-takeoff').forEach(n => n.remove());
+    document.querySelectorAll('.tko-press').forEach(n => n.classList.remove('tko-press'));
+  });
+})();

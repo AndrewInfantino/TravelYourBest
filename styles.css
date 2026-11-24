@@ -576,3 +576,41 @@ html.tyb-mt body{top:0!important;position:static!important}
     transform:translateX(-120%);transition:transform .7s ease}
   .btn-primary:hover::after{transform:translateX(120%)}
 }
+
+/* homepage headline: one sentence, evenly balanced lines on every screen */
+.home-hero h1{text-wrap:balance}
+/* footer: keep the left column compact on desktop so longer (Spanish) links wrap instead of pushing destinations below */
+@media(min-width:821px){
+  .foot-about-links{flex-wrap:wrap;row-gap:10px}
+}
+@media(min-width:1024px){
+  .foot-in{flex-wrap:nowrap}
+  .foot-in>div:first-child{flex:0 0 340px;max-width:340px}
+  .foot-links{flex:1 1 auto;min-width:0;justify-content:flex-end;flex-wrap:nowrap}
+  .foot-col.explore{flex:0 1 auto;min-width:0}
+}
+
+/* ---------- Tile click: plane take-off + orange light burst ---------- */
+.tyb-takeoff{position:fixed;width:0;height:0;z-index:100;pointer-events:none}
+.tyb-takeoff span{position:absolute;display:block}
+.tko-burst{left:-90px;top:-90px;width:180px;height:180px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,236,214,.98) 0%,rgba(255,170,110,.85) 22%,rgba(251,90,30,.55) 42%,rgba(251,90,30,0) 70%);
+  animation:tkoBurst .62s cubic-bezier(.2,.7,.2,1) forwards}
+.tko-ring{left:-30px;top:-30px;width:60px;height:60px;border-radius:50%;border:3px solid #fb5a1e;
+  animation:tkoRing .6s ease-out forwards}
+.tko-ray{left:-2px;top:-2px;width:4px;height:26px;border-radius:4px;transform-origin:2px 2px;
+  background:linear-gradient(180deg,rgba(251,90,30,0),#fb5a1e 60%,#ffc08f);
+  animation:tkoRay .55s cubic-bezier(.2,.7,.2,1) forwards}
+.tko-trail{left:0;top:-2px;width:150px;height:4px;border-radius:4px;transform-origin:0 50%;rotate:-45deg;
+  background:linear-gradient(90deg,rgba(251,90,30,.9),rgba(255,192,143,.6),rgba(255,255,255,0));
+  animation:tkoTrail .6s cubic-bezier(.5,0,.6,.4) forwards}
+.tko-plane{left:-19px;top:-19px;width:38px;height:38px;color:#fff;
+  filter:drop-shadow(0 0 6px rgba(251,90,30,.95)) drop-shadow(0 6px 14px rgba(251,90,30,.7));
+  animation:tkoFly .62s cubic-bezier(.55,0,.7,.35) forwards}
+.tko-plane svg{width:100%;height:100%;display:block;rotate:45deg}
+.citytile.tko-press{transform:scale(.97)!important;filter:brightness(1.08);transition:transform .2s ease,filter .2s ease}
+@keyframes tkoBurst{0%{transform:scale(.1);opacity:1}55%{opacity:.9}100%{transform:scale(2.3);opacity:0}}
+@keyframes tkoRing{0%{transform:scale(.2);opacity:1}100%{transform:scale(3.6);opacity:0}}
+@keyframes tkoRay{0%{transform:rotate(var(--a)) translateY(8px) scaleY(.4);opacity:0}25%{opacity:1}100%{transform:rotate(var(--a)) translateY(62px) scaleY(1);opacity:0}}
+@keyframes tkoTrail{0%{transform:scaleX(0);opacity:1}70%{opacity:1}100%{transform:scaleX(1);opacity:0}}
+@keyframes tkoFly{0%{transform:translate(0,0) scale(.55);opacity:0}15%{opacity:1}100%{transform:translate(150px,-150px) scale(1.3);opacity:0}}
