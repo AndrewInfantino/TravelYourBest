@@ -270,8 +270,9 @@ const Explorer = (function(){
   if(!deck) return;
   const SLIDES = [
     ['cappadocia.html','Turkey','home-hero-couple.webp'],
-    ['paris.html','France','paris-eiffel-trocadero-couple.webp'],
+    ['thailand.html','Phuket','phuket-elephant-kiss.webp'],
     ['seychelles.html','Indian Ocean','seychelles-source-dargent-couple-on-boulder.webp'],
+    ['paris.html','France','paris-eiffel-trocadero-couple.webp'],
     ['japan.html','Mt Fuji in bloom','fuji-oishi-flowers.webp'],
     ['madagascar.html','Avenue of the Baobabs','madagascar-baobab-avenue-couple-walking.webp'],
     ['bali.html','Indonesia','lempuyang-gates-melody.webp'],

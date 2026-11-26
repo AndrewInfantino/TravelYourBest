@@ -29,14 +29,14 @@ a{color:inherit}
 
 /* hero: the photo is the page */
 .hero{position:relative;margin:0;overflow:hidden;border-radius:0 0 34px 34px;background:var(--ocean);color:#fff;isolation:isolate}
-.hero img.photo{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:center 62%}
+.hero img.photo{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;object-position:center 68%}
 .hero::after{content:"";position:absolute;inset:0;z-index:0;
   background:linear-gradient(180deg,rgba(13,45,61,.45) 0%,rgba(13,45,61,0) 22%,rgba(13,45,61,0) 50%,rgba(13,45,61,.88) 100%)}
 .top{position:absolute;top:calc(12px + env(safe-area-inset-top));left:14px;right:14px;z-index:2;display:flex;justify-content:space-between;align-items:center}
 .lang{display:inline-flex;padding:3px;border-radius:999px;background:rgba(255,255,255,.2);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
 .lang button{font:inherit;font-size:.8rem;font-weight:700;border:0;background:transparent;color:#fff;padding:8px 14px;border-radius:999px;cursor:pointer;min-height:36px}
 .lang button[aria-pressed="true"]{background:#fff;color:var(--accent-ink)}
-.hero-body{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:0 22px 24px;text-align:center}
+.hero-body{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:0 22px 52px;text-align:center}
 .logo{display:block;width:min(250px,72%);height:auto;margin:0 auto 16px}
 .socials{display:flex;justify-content:center;gap:10px}
 .socials a{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;color:#fff;background:rgba(255,255,255,.16);
@@ -48,7 +48,7 @@ a{color:inherit}
 /* the website card */
 .site{display:block;position:relative;margin:-26px 4px 0;z-index:3;padding:20px 20px 18px;border-radius:24px;background:var(--accent);color:#fff;text-decoration:none;
   box-shadow:0 22px 40px -20px rgba(251,90,30,.85)}
-.site small{display:block;font-family:var(--serif);font-style:italic;font-size:1rem;opacity:.92;font-variation-settings:"SOFT" 100,"WONK" 1}
+.site small{display:block;padding-right:52px;font-family:var(--serif);font-style:italic;font-size:1rem;opacity:.92;font-variation-settings:"SOFT" 100,"WONK" 1}
 .site b{display:block;font-family:var(--serif);font-weight:600;font-size:1.75rem;letter-spacing:-.03em;line-height:1.1;margin:2px 0 14px;font-variation-settings:"SOFT" 100}
 .strip{display:flex;align-items:center;gap:0}
 .strip img{width:44px;height:44px;border-radius:50%;object-fit:cover;border:2.5px solid var(--accent);margin-right:-10px;background:#ffd5c2}
@@ -112,27 +112,18 @@ footer b{font-family:var(--serif);font-weight:600;color:var(--ink);font-size:.95
         <img src="../images/thumbs/paris.webp" alt="" width="44" height="44">
         <img src="../images/thumbs/japan.webp" alt="" width="44" height="44">
         <img src="../images/thumbs/rome.webp" alt="" width="44" height="44">
-        <span data-en="41 destinations, from Paris to the Seychelles" data-es="41 destinos, de París a las Seychelles">41 destinations, from Paris to the Seychelles</span>
+        <span data-en="Our real trips and the shots worth flying for" data-es="Nuestros viajes reales y las fotos por las que vale la pena volar">Our real trips and the shots worth flying for</span>
       </span>
       <span class="go" aria-hidden="true">→</span>
     </a>
 
-    <p class="label" data-en="Plan your next trip" data-es="Planea tu próximo viaje">Plan your next trip</p>
+    <p class="label" data-en="Our favourites" data-es="Nuestros favoritos">Our favourites</p>
     <div class="links">
-      <a class="lk lk--dark" href="https://travelyourbest.com/cruises.html" data-href-es="https://travelyourbest.com/es/cruises.html">
-        <span class="ico"><img src="../images/thumbs/cruises.webp" alt=""></span>
-        <span class="txt"><b data-en="Our cruises" data-es="Nuestros cruceros">Our cruises</b><span class="sub" data-en="Royal Caribbean, MSC, Norwegian &amp; Celebrity" data-es="Royal Caribbean, MSC, Norwegian y Celebrity">Royal Caribbean, MSC, Norwegian &amp; Celebrity</span></span>
-        <span class="arr" aria-hidden="true">→</span>
-      </a>
       <a class="lk" href="https://travelyourbest.com/products.html">
         <span class="ico" aria-hidden="true">🧳</span>
         <span class="txt"><b data-en="Our travel gear" data-es="Nuestro equipo de viaje">Our travel gear</b><span class="sub" data-en="Everything we pack and recommend" data-es="Todo lo que llevamos y recomendamos">Everything we pack and recommend</span></span>
         <span class="arr" aria-hidden="true">→</span>
       </a>
-    </div>
-
-    <p class="label" data-en="Our favourites" data-es="Nuestros favoritos">Our favourites</p>
-    <div class="links">
       <div class="grp">
         <a class="lk" href="https://roamless.sjv.io/qWKQky" target="_blank" rel="sponsored noopener">
           <span class="ico" style="background:#e6f1f8" aria-hidden="true">📶</span>
