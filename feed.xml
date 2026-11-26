@@ -6,8 +6,56 @@
 <atom:link href="https://travelyourbest.com/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Honest travel guides, top things to do and the best photo spots, from Andrew &amp; Melody.</description>
 <language>en-us</language>
-<lastBuildDate>Tue, 13 Oct 2026 12:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 26 Nov 2026 12:00:00 GMT</lastBuildDate>
 <image><url>https://travelyourbest.com/favicon.png</url><title>Travel Your Best</title><link>https://travelyourbest.com/</link></image>
+<item>
+<title>Our Cruises: Royal Caribbean, MSC, Norwegian &amp; Celebrity from Miami</title>
+<link>https://travelyourbest.com/cruises.html</link>
+<description>Every cruise we've taken from Miami and Fort Lauderdale, and why we love cruising.</description>
+<guid isPermaLink="true">https://travelyourbest.com/cruises.html</guid>
+<pubDate>Thu, 26 Nov 2026 12:00:00 GMT</pubDate>
+<media:content url="https://travelyourbest.com/images/cruise-oasis-boardwalk-night-couple.webp" medium="image"/>
+</item>
+<item>
+<title>Paris Travel Guide: Top Things to Do &amp; Best Photo Spots</title>
+<link>https://travelyourbest.com/paris.html</link>
+<description>Our Paris guide from a month living there: the Eiffel Tower light show, the Louvre, Palais Garnier, Montmartre and more.</description>
+<guid isPermaLink="true">https://travelyourbest.com/paris.html</guid>
+<pubDate>Thu, 26 Nov 2026 12:00:00 GMT</pubDate>
+<media:content url="https://travelyourbest.com/images/paris-eiffel-trocadero-couple.webp" medium="image"/>
+</item>
+<item>
+<title>Rome Travel Guide: Top Things to Do &amp; Best Photo Spots</title>
+<link>https://travelyourbest.com/rome.html</link>
+<description>The Colosseum, the Trevi Fountain, the Pantheon and where to eat in Rome.</description>
+<guid isPermaLink="true">https://travelyourbest.com/rome.html</guid>
+<pubDate>Thu, 26 Nov 2026 12:00:00 GMT</pubDate>
+<media:content url="https://travelyourbest.com/images/rome-colosseum-couple.webp" medium="image"/>
+</item>
+<item>
+<title>Milan Travel Guide: Top Things to Do &amp; Best Photo Spots</title>
+<link>https://travelyourbest.com/milan.html</link>
+<description>The Duomo and its rooftop, the Galleria, the Sforzesco Castle and Piazza Affari.</description>
+<guid isPermaLink="true">https://travelyourbest.com/milan.html</guid>
+<pubDate>Thu, 26 Nov 2026 12:00:00 GMT</pubDate>
+<media:content url="https://travelyourbest.com/images/milan-duomo-golden-hour-couple.webp" medium="image"/>
+</item>
+<item>
+<title>Vienna Travel Guide: Top Things to Do &amp; Best Photo Spots</title>
+<link>https://travelyourbest.com/vienna.html</link>
+<description>St Stephen's Cathedral, the Hofburg, Fiaker carriages and coffee houses.</description>
+<guid isPermaLink="true">https://travelyourbest.com/vienna.html</guid>
+<pubDate>Thu, 26 Nov 2026 12:00:00 GMT</pubDate>
+<media:content url="https://travelyourbest.com/images/vienna-stephansdom-couple.webp" medium="image"/>
+</item>
+<item>
+<title>Lisbon Travel Guide: Top Things to Do &amp; Best Photo Spots</title>
+<link>https://travelyourbest.com/lisbon.html</link>
+<description>Yellow trams, rooftop views, Belém Tower and a day trip to Sintra.</description>
+<guid isPermaLink="true">https://travelyourbest.com/lisbon.html</guid>
+<pubDate>Thu, 26 Nov 2026 12:00:00 GMT</pubDate>
+<media:content url="https://travelyourbest.com/images/lisbon-praca-do-comercio-couple.webp" medium="image"/>
+</item>
 <item>
 <title>Prague Travel Guide: Top Things to Do &amp; Best Photo Spots</title>
 <link>https://travelyourbest.com/prague.html</link>
@@ -81,7 +129,7 @@
 <media:content url="https://travelyourbest.com/images/miami-downtown-couple.webp" medium="image"/>
 </item>
 <item>
-<title>Mexico Travel Guide: Cozumel &amp; Costa Maya — Top Things to Do &amp; Best Photo Spots</title>
+<title>Mexico Travel Guide: Cozumel &amp; Costa Maya: Top Things to Do &amp; Best Photo Spots</title>
 <link>https://travelyourbest.com/mexico.html</link>
 <description>Our guide to Cozumel and Costa Maya, Mexico: scooter beach-hopping, snorkelling and the Chacchoben Mayan ruins. Best beaches and photo spots.</description>
 <guid isPermaLink="true">https://travelyourbest.com/mexico.html</guid>

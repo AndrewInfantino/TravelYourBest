@@ -1,10 +1,10 @@
 // ==================================================================
-// Travel Your Best — site behaviour (2026 redesign)
+// Travel Your Best, site behaviour (2026 redesign)
 // ==================================================================
 
 // ---------- Language (EN default, ES) ----------
 // Pages with a hand-translated Spanish twin live in /es/. Every other page is machine-translated on request.
-const TYB_TWINS = ['index.html','about.html','barcelona.html','balearic-islands.html','lanzarote.html','dominican-republic.html','mexico.html'];
+const TYB_TWINS = ['index.html','about.html','cruises.html','barcelona.html','balearic-islands.html','lanzarote.html','dominican-republic.html','mexico.html'];
 const TYB_ES = /\/es(\/|$)/.test(location.pathname);
 const TYB_SEG = location.pathname.split('/').pop();
 const TYB_FILE = (TYB_SEG || 'index.html').replace(/^([^.]+)$/, '$1.html');
@@ -14,18 +14,18 @@ function tybUrl(u){ // resolve a root-relative page link from inside /es/
   if(!TYB_ES) return u;
   return TYB_TWINS.includes(u.split('#')[0]) ? u : '../' + u;
 }
-const ES_NAMES = {'Amsterdam':'Ámsterdam','Athens':'Atenas','Balearic Islands':'Islas Baleares','Beijing':'Pekín','Cairo':'El Cairo','Cappadocia':'Capadocia','Dominican Republic':'República Dominicana','Florence':'Florencia','Israel & Palestine':'Israel y Palestina','Istanbul':'Estambul','Japan':'Japón','Lake Como':'Lago de Como','London':'Londres','Mauritius':'Mauricio','Mexico':'México','Morocco':'Marruecos','Positano & Capri':'Positano y Capri','Prague':'Praga','Sicily':'Sicilia','Singapore':'Singapur','Strasbourg & Alsace':'Estrasburgo y Alsacia','Thailand':'Tailandia','Tunis':'Túnez','Venice':'Venecia'};
+const ES_NAMES = {'Lisbon':'Lisboa','Milan':'Milán','Paris':'París','Rome':'Roma','Vienna':'Viena','Amsterdam':'Ámsterdam','Athens':'Atenas','Balearic Islands':'Islas Baleares','Beijing':'Pekín','Cairo':'El Cairo','Cappadocia':'Capadocia','Dominican Republic':'República Dominicana','Florence':'Florencia','Israel & Palestine':'Israel y Palestina','Istanbul':'Estambul','Japan':'Japón','Lake Como':'Lago de Como','London':'Londres','Mauritius':'Mauricio','Mexico':'México','Morocco':'Marruecos','Positano & Capri':'Positano y Capri','Prague':'Praga','Sicily':'Sicilia','Singapore':'Singapur','Strasbourg & Alsace':'Estrasburgo y Alsacia','Thailand':'Tailandia','Tunis':'Túnez','Venice':'Venecia'};
 function tybName(n){ return TYB_ES ? (ES_NAMES[n] || n) : n; }
-const ES_SUBS = {"Netherlands": "Países Bajos", "Greece": "Grecia", "Ibiza, Menorca & Mallorca · Spain": "Ibiza, Menorca y Mallorca · España", "Spain": "España", "Egypt": "Egipto", "Turkey": "Turquía", "Punta Cana, Samaná & more": "Punta Cana, Samaná y más", "Croatia": "Croacia", "Bologna, Pisa & Italy": "Bolonia, Pisa e Italia", "Jerusalem, Bethlehem & Tel Aviv": "Jerusalén, Belén y Tel Aviv", "Osaka, Kyoto & Tokyo": "Osaka, Kioto y Tokio", "Italy": "Italia", "Canary Islands · Spain": "Islas Canarias · España", "England": "Inglaterra", "Morondava & the Avenue of the Baobabs": "Morondava y la Avenida de los Baobabs", "Le Morne, Chamarel & Île aux Cerfs": "Le Morne, Chamarel e Île aux Cerfs", "Czech Republic: Old Town, Charles Bridge & the castle": "República Checa: Ciudad Vieja, Puente de Carlos y el castillo", "Cozumel & Costa Maya": "Cozumel y Costa Maya", "Miami & Fort Lauderdale · Florida": "Miami y Fort Lauderdale · Florida", "Quebec, Canada": "Quebec, Canadá", "Marrakesh, Sahara & more": "Marrakech, el Sáhara y más", "Amalfi Coast · Italy": "Costa Amalfitana · Italia", "Mahé, Praslin & La Digue": "Mahé, Praslin y La Digue", "Palermo & Mondello · Italy": "Palermo y Mondello · Italia", "Singapore": "Singapur", "France": "Francia", "Bangkok & Phuket": "Bangkok y Phuket", "Tunisia": "Túnez", "Burano, Murano & Italy": "Burano, Murano e Italia", "Hanoi & Ninh Binh": "Hanói y Ninh Binh", "Czech Republic": "República Checa", "Indonesia": "Indonesia", "China": "China", "Bahamas": "Bahamas", "Jamaica": "Jamaica", "Madagascar": "Madagascar", "Mauritius": "Mauricio", "Seychelles": "Seychelles", "Vietnam": "Vietnam", "Japan": "Japón", "Morocco": "Marruecos", "USA": "EE. UU.", "Canada": "Canadá", "Mexico": "México", "Israel & Palestine": "Israel y Palestina", "Dominican Republic": "República Dominicana"};
+const ES_SUBS = {"Netherlands": "Países Bajos", "Greece": "Grecia", "Ibiza, Menorca & Mallorca · Spain": "Ibiza, Menorca y Mallorca · España", "Spain": "España", "Egypt": "Egipto", "Turkey": "Turquía", "Punta Cana, Samaná & more": "Punta Cana, Samaná y más", "Croatia": "Croacia", "Bologna, Pisa & Italy": "Bolonia, Pisa e Italia", "Jerusalem, Bethlehem & Tel Aviv": "Jerusalén, Belén y Tel Aviv", "Osaka, Kyoto & Tokyo": "Osaka, Kioto y Tokio", "Italy": "Italia", "Canary Islands · Spain": "Islas Canarias · España", "England": "Inglaterra", "Morondava & the Avenue of the Baobabs": "Morondava y la Avenida de los Baobabs", "Le Morne, Chamarel & Île aux Cerfs": "Le Morne, Chamarel e Île aux Cerfs", "Czech Republic: Old Town, Charles Bridge & the castle": "República Checa: Ciudad Vieja, Puente de Carlos y el castillo", "Cozumel & Costa Maya": "Cozumel y Costa Maya", "Miami & Fort Lauderdale · Florida": "Miami y Fort Lauderdale · Florida", "Quebec, Canada": "Quebec, Canadá", "Marrakesh, Sahara & more": "Marrakech, el Sáhara y más", "Amalfi Coast · Italy": "Costa Amalfitana · Italia", "Mahé, Praslin & La Digue": "Mahé, Praslin y La Digue", "Palermo & Mondello · Italy": "Palermo y Mondello · Italia", "Singapore": "Singapur", "France": "Francia", "Bangkok & Phuket": "Bangkok y Phuket", "Tunisia": "Túnez", "Burano, Murano & Italy": "Burano, Murano e Italia", "Hanoi & Ninh Binh": "Hanói y Ninh Binh", "Czech Republic": "República Checa", "Indonesia": "Indonesia", "China": "China", "Bahamas": "Bahamas", "Jamaica": "Jamaica", "Madagascar": "Madagascar", "Mauritius": "Mauricio", "Seychelles": "Seychelles", "Vietnam": "Vietnam", "Japan": "Japón", "Morocco": "Marruecos", "USA": "EE. UU.", "Canada": "Canadá", "Mexico": "México", "Israel & Palestine": "Israel y Palestina", "Dominican Republic": "República Dominicana", "Portugal: Baixa, Alfama, Belém & Sintra": "Portugal: Baixa, Alfama, Belém y Sintra", "Austria": "Austria", "The Colosseum, Trevi & the Pantheon · Italy": "El Coliseo, la Fontana di Trevi y el Panteón · Italia", "The Duomo & the Galleria · Italy": "El Duomo y la Galería · Italia", "France: Eiffel Tower, Louvre & Montmartre": "Francia: torre Eiffel, Louvre y Montmartre"};
 function tybSub(t){ return TYB_ES ? (ES_SUBS[t] || t) : t; }
 const L = TYB_ES ? {
   where:'¿A dónde vamos?', search:'Busca un destino…', none:'No se encontró ningún destino', close:'Cerrar', home:'Inicio', explore:'Destinos',
   find:'Buscar', story:'Historia', contact:'Contacto', products:'Productos', ourStory:'Nuestra historia', prev:'Anterior', next:'Siguiente',
-  top:'Volver arriba', stop:'Parar', route:'Ver nuestros viajes'
+  top:'Volver arriba', cruises:'Cruceros', stop:'Parar', route:'Ver nuestros viajes'
 } : {
   where:'Where to next?', search:'Search a destination…', none:'No destination found', close:'Close', home:'Home', explore:'Explore',
   find:'Search', story:'Our Story', contact:'Contact', products:'Products', ourStory:'Our Story', prev:'Previous', next:'Next',
-  top:'Back to top', stop:'Stop', route:'Trace our journeys'
+  top:'Back to top', cruises:'Cruises', stop:'Stop', route:'Trace our journeys'
 };
 
 document.documentElement.classList.add('js');
@@ -42,7 +42,7 @@ const ICON = {
 };
 
 // ---------- destinations (constrained to real pages) ----------
-// r = region: eu Europe · me Türkiye & the Middle East · af Africa & the Indian Ocean · as Asia · am The Americas & Caribbean
+// r = region: it Italy · eu Europe · me Türkiye & the Middle East · af Africa & the Indian Ocean · as Asia · am The Americas & Caribbean
 const DESTS = [
   {n:'Amsterdam',s:'Netherlands',u:'amsterdam.html',r:'eu',i:'amsterdam-bridge-couple.webp'},
   {n:'Athens',s:'Greece',u:'athens.html',r:'eu',i:'athens-acropolis-hill.webp'},
@@ -55,35 +55,40 @@ const DESTS = [
   {n:'Dominican Republic',s:'Punta Cana, Samaná & more',u:'dominican-republic.html',r:'am',i:'samana-playa-rincon-palms-couple.webp'},
   {n:'Dubrovnik',s:'Croatia',u:'dubrovnik.html',r:'eu',i:'dubrovnik-srd-viewpoint-couple.webp'},
   {n:'Falmouth',s:'Jamaica',u:'falmouth.html',r:'am',i:'falmouth-beach-jamaica-flag-couple.webp'},
-  {n:'Florence',s:'Bologna, Pisa & Italy',u:'florence.html',r:'eu',i:'florence-duomo-facade-couple.webp'},
+  {n:'Florence',s:'Bologna, Pisa & Italy',u:'florence.html',r:'it',i:'florence-duomo-facade-couple.webp'},
   {n:'Hong Kong',s:'China',u:'hong-kong.html',r:'as',i:'hk-harbour-sunset-melody.webp'},
   {n:'Israel & Palestine',s:'Jerusalem, Bethlehem & Tel Aviv',u:'israel-palestine.html',r:'me',i:'jerusalem-oldcity-sunrise.webp'},
   {n:'Istanbul',s:'Turkey',u:'istanbul.html',r:'me',i:'istanbul-hagia-sophia-couple.webp'},
   {n:'Japan',s:'Osaka, Kyoto & Tokyo',u:'japan.html',r:'as',i:'fuji-oishi-flowers.webp'},
-  {n:'Lake Como',s:'Italy',u:'como.html',r:'eu',i:'como-villa-terrace-melody.webp'},
+  {n:'Lake Como',s:'Italy',u:'como.html',r:'it',i:'como-villa-terrace-melody.webp'},
+  {n:'Lisbon',s:'Portugal: Baixa, Alfama, Belém & Sintra',u:'lisbon.html',r:'eu',i:'lisbon-praca-do-comercio-couple.webp'},
   {n:'Lanzarote',s:'Canary Islands · Spain',u:'lanzarote.html',r:'eu',i:'lanzarote-mirador-rio-couple.webp'},
   {n:'London',s:'England',u:'london.html',r:'eu',i:'london-telephone-bigben-couple.webp'},
   {n:'Madagascar',s:'Morondava & the Avenue of the Baobabs',u:'madagascar.html',r:'af',i:'madagascar-baobab-avenue-couple-walking.webp'},
   {n:'Mauritius',s:'Le Morne, Chamarel & Île aux Cerfs',u:'mauritius.html',r:'af',i:'mauritius-le-morne-golden-hour-couple.webp'},
   {n:'Mexico',s:'Cozumel & Costa Maya',u:'mexico.html',r:'am',i:'cozumel-beach-couple.webp'},
   {n:'Miami',s:'Miami & Fort Lauderdale · Florida',u:'miami.html',r:'am',i:'miami-downtown-couple.webp'},
+  {n:'Milan',s:'The Duomo & the Galleria · Italy',u:'milan.html',r:'it',i:'milan-duomo-golden-hour-couple.webp'},
   {n:'Montreal',s:'Quebec, Canada',u:'montreal.html',r:'am',i:'montreal-saint-joseph-oratory-couple.webp'},
   {n:'Morocco',s:'Marrakesh, Sahara & more',u:'morocco.html',r:'af',i:'morocco-sahara-camel-shadows.webp'},
   {n:'Nassau',s:'Bahamas',u:'nassau.html',r:'am',i:'nassau-pig-couple-feeding.webp'},
-  {n:'Positano & Capri',s:'Amalfi Coast · Italy',u:'positano.html',r:'eu',i:'positano-panorama.webp'},
+  {n:'Paris',s:'France: Eiffel Tower, Louvre & Montmartre',u:'paris.html',r:'eu',i:'paris-eiffel-trocadero-couple.webp'},
+  {n:'Positano & Capri',s:'Amalfi Coast · Italy',u:'positano.html',r:'it',i:'positano-panorama.webp'},
   {n:'Prague',s:'Czech Republic: Old Town, Charles Bridge & the castle',u:'prague.html',r:'eu',i:'prague-couple-riverside-charles-bridge.webp'},
+  {n:'Rome',s:'The Colosseum, Trevi & the Pantheon · Italy',u:'rome.html',r:'it',i:'rome-colosseum-couple.webp'},
   {n:'Seychelles',s:'Mahé, Praslin & La Digue',u:'seychelles.html',r:'af',i:'seychelles-source-dargent-couple-on-boulder.webp'},
-  {n:'Sicily',s:'Palermo & Mondello · Italy',u:'sicily.html',r:'eu',i:'sicily-palermo-cathedral-couple-palms.webp'},
+  {n:'Sicily',s:'Palermo & Mondello · Italy',u:'sicily.html',r:'it',i:'sicily-palermo-cathedral-couple-palms.webp'},
   {n:'Singapore',s:'Singapore',u:'singapore.html',r:'as',i:'singapore-mbs-rooftop-couple.webp'},
   {n:'Strasbourg & Alsace',s:'France',u:'strasbourg.html',r:'eu',i:'strasbourg-place-kleber-tree-couple.webp'},
   {n:'Thailand',s:'Bangkok & Phuket',u:'thailand.html',r:'as',i:'phuket-elephant-kiss.webp'},
   {n:'Tunis',s:'Tunisia',u:'tunis.html',r:'af',i:'tunis-marina-sunset-couple.webp'},
-  {n:'Venice',s:'Burano, Murano & Italy',u:'venice.html',r:'eu',i:'venice-gondola-selfie-rialto.webp'},
+  {n:'Venice',s:'Burano, Murano & Italy',u:'venice.html',r:'it',i:'venice-gondola-selfie-rialto.webp'},
+  {n:'Vienna',s:'Austria',u:'vienna.html',r:'eu',i:'vienna-stephansdom-couple.webp'},
   {n:'Vietnam',s:'Hanoi & Ninh Binh',u:'vietnam.html',r:'as',i:'ninhbinh-trangan-boat-couple.webp'}
 ];
 const REGIONS = TYB_ES
-  ? [['eu','Europa'],['me','Turquía y Oriente Medio'],['af','África y el Índico'],['as','Asia'],['am','América y el Caribe']]
-  : [['eu','Europe'],['me','Türkiye & the Middle East'],['af','Africa & the Indian Ocean'],['as','Asia'],['am','The Americas & Caribbean']];
+  ? [['it','Italia'],['eu','Europa'],['me','Turquía y Oriente Medio'],['af','África y el Índico'],['as','Asia'],['am','América y el Caribe']]
+  : [['it','Italy'],['eu','Europe'],['me','Türkiye & the Middle East'],['af','Africa & the Indian Ocean'],['as','Asia'],['am','The Americas & Caribbean']];
 const thumb = d => TYB_ROOT + 'images/thumbs/' + d.u.replace('.html','') + '.webp';
 const big = d => TYB_ROOT + 'images/' + d.i;
 const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
@@ -139,11 +144,12 @@ const Explorer = (function(){
   xp.className = 'xp'; xp.id = 'explorer';
   xp.setAttribute('role','dialog'); xp.setAttribute('aria-modal','true'); xp.setAttribute('aria-label', L.where);
   const link = (u, label) => '<a href="'+tybUrl(u)+'">'+label+'</a>';
-  const mainLinks = link('index.html', L.home) + link('products.html', L.products) + link('about.html', L.ourStory) + link('contact.html', L.contact);
+  const mainLinks = link('index.html', L.home) + link('cruises.html', L.cruises) + link('products.html', L.products) + link('about.html', L.ourStory) + link('contact.html', L.contact);
   let regions = '';
   REGIONS.forEach(([k, label]) => {
     const items = DESTS.filter(d => d.r === k).sort((a,b) => tybName(a.n).localeCompare(tybName(b.n)));
-    regions += '<div class="xp-region" data-r="'+k+'"><h3>'+label+'</h3><ul>' + items.map(d =>
+    const h3 = k === 'it' ? '<a class="xp-hub" href="'+tybUrl('italy.html')+'">'+label+' <span aria-hidden="true">→</span></a>' : label;
+    regions += '<div class="xp-region" data-r="'+k+'"><h3>'+h3+'</h3><ul>' + items.map(d =>
       '<li><a href="'+tybUrl(d.u)+'" data-n="'+esc(d.n)+'"'+(d.u===here?' aria-current="page"':'')+'><img loading="lazy" src="'+thumb(d)+'" alt="" width="38" height="38"><span><b>'+esc(tybName(d.n))+'</b><span>'+esc(tybSub(d.s))+'</span></span></a></li>'
     ).join('') + '</ul></div>';
   });
@@ -264,6 +270,7 @@ const Explorer = (function(){
   if(!deck) return;
   const SLIDES = [
     ['cappadocia.html','Turkey','home-hero-couple.webp'],
+    ['paris.html','France','paris-eiffel-trocadero-couple.webp'],
     ['seychelles.html','Indian Ocean','seychelles-source-dargent-couple-on-boulder.webp'],
     ['japan.html','Mt Fuji in bloom','fuji-oishi-flowers.webp'],
     ['madagascar.html','Avenue of the Baobabs','madagascar-baobab-avenue-couple-walking.webp'],
@@ -275,7 +282,7 @@ const Explorer = (function(){
     ['positano.html','Amalfi Coast','positano-panorama.webp'],
     ['barcelona.html','Our home city','barcelona-park-guell-bench-couple.webp']
   ];
-  const SUB_ES = {'Turkey':'Turquía','Indian Ocean':'Océano Índico','Mt Fuji in bloom':'El monte Fuji en flor','Avenue of the Baobabs':'Avenida de los Baobabs','Czech Republic':'República Checa','The Sahara':'El Sáhara','Italy':'Italia','Amalfi Coast':'Costa Amalfitana','Our home city':'Nuestra ciudad','Le Morne':'Le Morne','Indonesia':'Indonesia'};
+  const SUB_ES = {'Turkey':'Turquía','Indian Ocean':'Océano Índico','Mt Fuji in bloom':'El monte Fuji en flor','Avenue of the Baobabs':'Avenida de los Baobabs','Czech Republic':'República Checa','The Sahara':'El Sáhara','Italy':'Italia','Amalfi Coast':'Costa Amalfitana','Our home city':'Nuestra ciudad','France':'Francia','Le Morne':'Le Morne','Indonesia':'Indonesia'};
   const sub = s => TYB_ES ? (SUB_ES[s[1]] || s[1]) : s[1];
   const firstImg = deck.querySelector('img');
   deck.innerHTML = '';
@@ -415,7 +422,7 @@ const Explorer = (function(){
   // our trips in the order we took them
   const MO_EN = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   const MO_ES = ['ene','feb','mar','abr','may','jun','jul','ago','sept','oct','nov','dic'];
-  const ROUTE = [['venice',12,2022],['athens',2,2024],['istanbul',3,2024],['positano',5,2024],['sicily',5,2024],['morocco',5,2024],['nassau',7,2024],['cairo',8,2024],
+  const ROUTE = [['paris',4,2022],['venice',12,2022],['athens',2,2024],['istanbul',3,2024],['positano',5,2024],['sicily',5,2024],['morocco',5,2024],['nassau',7,2024],['cairo',8,2024],
     ['miami',11,2024],['mexico',1,2025],['cappadocia',2,2025],['thailand',3,2025],['singapore',3,2025],['israel-palestine',4,2025],['amsterdam',5,2025],['dubrovnik',5,2025],
     ['london',6,2025],['como',8,2025],['bali',9,2025],['lanzarote',11,2025],['strasbourg',12,2025],['falmouth',2,2026],['hong-kong',3,2026],['beijing',4,2026],['japan',4,2026],
     ['vietnam',7,2026],['tunis',8,2026],['seychelles',9,2026],['madagascar',9,2026],['mauritius',9,2026],['prague',10,2026]];
@@ -506,10 +513,10 @@ const Explorer = (function(){
     msg.scrollIntoView({ block: 'center', behavior: 'smooth' });
   }
   document.querySelectorAll('form.foot-signup, form.signup-form').forEach(function (f) {
-    attachAjax(f, TYB_ES ? "<strong>¡Ya estás dentro! 🎉</strong> Gracias por unirte al viaje." : "<strong>You're in! 🎉</strong> Thanks for joining the journey — see you in your inbox.", TYB_ES ? 'Enviando…' : 'Joining…');
+    attachAjax(f, TYB_ES ? "<strong>¡Ya estás dentro! 🎉</strong> Gracias por unirte al viaje." : "<strong>You're in! 🎉</strong> Thanks for joining the journey: see you in your inbox.", TYB_ES ? 'Enviando…' : 'Joining…');
   });
   attachAjax(document.getElementById('contactForm'),
-    "<strong>Message sent! ✅</strong> Thanks for reaching out — we'll get back to you as soon as we can.", 'Sending…');
+    "<strong>Message sent! ✅</strong> Thanks for reaching out: we'll get back to you as soon as we can.", 'Sending…');
 })();
 
 // ---------- Language toggle ----------

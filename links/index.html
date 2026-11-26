@@ -3,74 +3,98 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Travel Your Best — Andrew &amp; Melody | Links</title>
+<title>Travel Your Best | Links</title>
 <meta name="description" content="All our links in one place: our travel guides, the eSIM and travel gear we use, and our Instagram, TikTok and YouTube.">
 <meta name="robots" content="noindex, follow">
-<meta name="theme-color" content="#fb5a1e">
+<meta name="theme-color" content="#0d2d3d">
 <link rel="canonical" href="https://travelyourbest.com/links/">
 <link rel="icon" type="image/png" href="../favicon.png">
 <link rel="apple-touch-icon" href="../favicon.png">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Travel Your Best — Andrew &amp; Melody">
+<meta property="og:title" content="Travel Your Best | Andrew &amp; Melody">
 <meta property="og:description" content="Our travel guides, favourite gear and socials, all in one place.">
 <meta property="og:url" content="https://travelyourbest.com/links/">
 <meta property="og:image" content="https://travelyourbest.com/images/travelyourbest-share-seychelles-beach-couple.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,500..700,100,0..1;1,9..144,400..600,100,1&display=swap" rel="stylesheet">
 <style>
-:root{--paper:#fff;--paper-2:#faf8f5;--ink:#17140f;--ink-soft:#6d675f;--hair:#ece7df;--accent:#fb5a1e;--accent-ink:#c8410f;
+:root{--ink:#12232f;--ink-soft:#5a6a74;--hair:#e3eaed;--mist:#f0f5f7;--accent:#fb5a1e;--accent-ink:#cf420c;--ocean:#0d2d3d;--sun:#ffc24a;
   --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","Inter",system-ui,"Segoe UI",sans-serif;--serif:"Fraunces",Georgia,serif}
 *{box-sizing:border-box}
 html,body{margin:0}
-body{background:var(--paper-2);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;
-  padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0)}
-.page{max-width:480px;margin:0 auto;padding:16px 16px 40px}
-.hero{border-radius:24px;overflow:hidden;background:#fff;box-shadow:0 18px 50px -28px rgba(30,20,10,.35)}
-.hero img.photo{display:block;width:100%;height:auto;aspect-ratio:5/4;object-fit:cover;object-position:center 40%}
-.hero-body{padding:20px 20px 22px;text-align:center}
-.logo{display:block;width:min(230px,70%);height:auto;margin:0 auto 10px}
-.hero-body p{margin:0;color:var(--ink-soft);font-size:.95rem;line-height:1.5}
-.socials{display:flex;justify-content:center;gap:12px;margin-top:16px}
-.socials a{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:var(--paper-2);border:1px solid var(--hair);color:var(--ink);transition:transform .2s ease,background .2s ease}
-.socials a:hover,.socials a:focus-visible{transform:translateY(-2px);background:#fff}
+body{background:var(--mist);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;font-size:16px;line-height:1.45}
+a{color:inherit}
+.page{max-width:460px;margin:0 auto;padding:0 0 calc(30px + env(safe-area-inset-bottom))}
+
+/* hero: the photo is the page */
+.hero{position:relative;margin:0;overflow:hidden;border-radius:0 0 34px 34px;background:var(--ocean);color:#fff;isolation:isolate}
+.hero img.photo{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:center 62%}
+.hero::after{content:"";position:absolute;inset:0;z-index:0;
+  background:linear-gradient(180deg,rgba(13,45,61,.45) 0%,rgba(13,45,61,0) 22%,rgba(13,45,61,0) 50%,rgba(13,45,61,.88) 100%)}
+.top{position:absolute;top:calc(12px + env(safe-area-inset-top));left:14px;right:14px;z-index:2;display:flex;justify-content:space-between;align-items:center}
+.lang{display:inline-flex;padding:3px;border-radius:999px;background:rgba(255,255,255,.2);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.lang button{font:inherit;font-size:.8rem;font-weight:700;border:0;background:transparent;color:#fff;padding:8px 14px;border-radius:999px;cursor:pointer;min-height:36px}
+.lang button[aria-pressed="true"]{background:#fff;color:var(--accent-ink)}
+.hero-body{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:0 22px 24px;text-align:center}
+.logo{display:block;width:min(250px,72%);height:auto;margin:0 auto 16px}
+.socials{display:flex;justify-content:center;gap:10px}
+.socials a{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;color:#fff;background:rgba(255,255,255,.16);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.25);transition:background-color .2s}
+.socials a:hover,.socials a:focus-visible{background:rgba(255,255,255,.3)}
 .socials svg{width:21px;height:21px}
-.links{display:flex;flex-direction:column;gap:12px;margin-top:18px}
-.lk{display:flex;align-items:center;gap:14px;min-height:68px;padding:12px 16px;border-radius:18px;background:#fff;border:1px solid var(--hair);color:var(--ink);text-decoration:none;transition:transform .2s ease,box-shadow .2s ease}
-.lk:hover,.lk:focus-visible{transform:translateY(-2px);box-shadow:0 14px 30px -18px rgba(30,20,10,.35)}
-.lk .ico{flex:none;width:44px;height:44px;border-radius:13px;display:grid;place-items:center;font-size:1.35rem;background:#fdeee6}
+
+.body{padding:0 16px}
+/* the website card */
+.site{display:block;position:relative;margin:-26px 4px 0;z-index:3;padding:20px 20px 18px;border-radius:24px;background:var(--accent);color:#fff;text-decoration:none;
+  box-shadow:0 22px 40px -20px rgba(251,90,30,.85)}
+.site small{display:block;font-family:var(--serif);font-style:italic;font-size:1rem;opacity:.92;font-variation-settings:"SOFT" 100,"WONK" 1}
+.site b{display:block;font-family:var(--serif);font-weight:600;font-size:1.75rem;letter-spacing:-.03em;line-height:1.1;margin:2px 0 14px;font-variation-settings:"SOFT" 100}
+.strip{display:flex;align-items:center;gap:0}
+.strip img{width:44px;height:44px;border-radius:50%;object-fit:cover;border:2.5px solid var(--accent);margin-right:-10px;background:#ffd5c2}
+.strip span{margin-left:20px;font-weight:650;font-size:.92rem}
+.site .go{position:absolute;right:18px;top:20px;width:42px;height:42px;border-radius:50%;background:#fff;color:var(--accent-ink);display:grid;place-items:center;font-size:1.2rem;font-weight:700}
+
+.label{font-family:var(--serif);font-style:italic;font-size:1.15rem;color:var(--accent-ink);margin:28px 6px 10px;font-variation-settings:"SOFT" 100,"WONK" 1}
+.links{display:flex;flex-direction:column;gap:10px}
+.lk{display:flex;align-items:center;gap:14px;min-height:72px;padding:12px 14px;border-radius:20px;background:#fff;color:var(--ink);text-decoration:none;
+  box-shadow:0 1px 0 var(--hair);transition:transform .15s ease}
+.lk:active{transform:scale(.985)}
+.lk .ico{flex:none;width:48px;height:48px;border-radius:14px;display:grid;place-items:center;font-size:1.45rem;background:var(--mist);overflow:hidden}
+.lk .ico img{width:100%;height:100%;object-fit:cover}
 .lk .txt{flex:1;min-width:0}
-.lk b{display:block;font-size:1rem;font-weight:650;line-height:1.25}
-.lk span.sub{display:block;font-size:.84rem;color:var(--ink-soft);margin-top:2px}
-.lk .arr{flex:none;color:var(--ink-soft);font-size:1.1rem}
-.lk--main{background:var(--accent);border-color:var(--accent);color:#fff}
-.lk--main .ico{background:rgba(255,255,255,.2)}
-.lk--main span.sub,.lk--main .arr{color:rgba(255,255,255,.88)}
-.code{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:-4px 0 0;padding:10px 12px 10px 16px;border:1.5px dashed #409cd1;border-radius:14px;background:#f3f9fd}
-.code span{font-size:.82rem;color:#2c5f80}
-.code b{font-family:ui-monospace,Menlo,monospace;letter-spacing:.04em;font-size:.95rem}
-.code button{font:inherit;font-size:.82rem;font-weight:700;border:0;border-radius:9px;padding:8px 14px;background:#409cd1;color:#fff;cursor:pointer;min-height:36px}
-.label{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-ink);margin:22px 4px 2px}
-footer{text-align:center;color:var(--ink-soft);font-size:.78rem;margin-top:26px;line-height:1.5}
-.code--cz{border-color:var(--accent);background:#fff6f1}.code--cz span{color:var(--accent-ink)}.code--cz button{background:var(--accent)}
-.code b{word-break:break-all}
-/* link card + its promo code read as one connected unit */
-.lk-group{display:flex;flex-direction:column}
-.lk-group .lk{border-radius:18px 18px 0 0;border-bottom:0}
-.lk-group .lk:hover,.lk-group .lk:focus-visible{transform:none;box-shadow:none;background:#fffdfb}
-.lk-group .code{margin:0;border-radius:0 0 18px 18px;border:1px solid var(--hair);border-top:1.5px dashed #9cc9e6;padding:9px 10px 9px 16px}
-.lk-group .code b{white-space:nowrap;word-break:normal;letter-spacing:.02em;font-size:.9rem}
-.lk-group .code--cz{border-top-color:#f7b496}
-.lk-group:hover{filter:drop-shadow(0 12px 18px rgba(30,20,10,.12))}
+.lk b{display:block;font-size:1.02rem;font-weight:650;line-height:1.25}
+.lk .sub{display:block;font-size:.86rem;color:var(--ink-soft);margin-top:2px}
+.lk .arr{flex:none;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--mist);color:var(--ink);font-size:.95rem}
+.lk--dark{background:var(--ocean);color:#fff}
+.lk--dark .sub{color:rgba(255,255,255,.72)}
+.lk--dark .arr{background:rgba(255,255,255,.14);color:#fff}
+.grp{display:flex;flex-direction:column;border-radius:20px;overflow:hidden;background:#fff;box-shadow:0 1px 0 var(--hair)}
+.grp .lk{border-radius:0;box-shadow:none}
+.code{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px 12px 16px;border-top:1.5px dashed var(--hair);background:#fffaf7}
+.code span{font-size:.84rem;color:var(--ink-soft)}
+.code b{font-family:ui-monospace,Menlo,monospace;letter-spacing:.03em;font-size:.92rem;color:var(--ink);white-space:nowrap}
+.code button{font:inherit;font-size:.84rem;font-weight:700;border:0;border-radius:999px;padding:8px 16px;background:var(--accent);color:#fff;cursor:pointer;min-height:38px;flex:none}
+.code--blue{background:#f3f9fd}.code--blue button{background:#409cd1}
+footer{text-align:center;color:var(--ink-soft);font-size:.8rem;margin:28px 18px 0;line-height:1.5}
+footer b{font-family:var(--serif);font-weight:600;color:var(--ink);font-size:.95rem}
+:focus-visible{outline:2.5px solid var(--accent);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
 <main class="page">
   <header class="hero">
-    <img class="photo" src="../images/travelyourbest-share-seychelles-beach-couple.jpg" alt="Andrew and Melody walking along a white-sand beach in the Seychelles" width="1200" height="630">
+    <img class="photo" src="../images/links-seychelles-praslin-beach-couple.webp" alt="Andrew and Melody walking along a white-sand beach on Praslin in the Seychelles" width="1125" height="1500">
+    <div class="top">
+      <span></span>
+      <div class="lang" role="group" aria-label="Language / Idioma">
+        <button type="button" data-set="en" aria-pressed="true">English</button>
+        <button type="button" data-set="es" aria-pressed="false">Español</button>
+      </div>
+    </div>
     <div class="hero-body">
-      <img class="logo" src="../images/travel-your-best-logo.png" alt="Travel Your Best" width="681" height="100">
-      <p>Andrew &amp; Melody · Real trips and the shots worth flying for.</p>
+      <img class="logo" src="../images/travel-your-best-logo-white.png" alt="Travel Your Best" width="681" height="100">
       <nav class="socials" aria-label="Our socials">
         <a href="https://www.instagram.com/andrewlovesmelody/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a>
         <a href="https://www.tiktok.com/@andrewlovesmelody" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 2h-3.3v13.2a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9a6.3 6.3 0 1 0 5.3 6.2V8.6a7.9 7.9 0 0 0 4.4 1.4V6.7a4.5 4.5 0 0 1-4.4-4.7z"/></svg></a>
@@ -79,68 +103,105 @@ footer{text-align:center;color:var(--ink-soft);font-size:.78rem;margin-top:26px;
     </div>
   </header>
 
-  <div class="links">
-    <a class="lk lk--main" href="https://travelyourbest.com/">
-      <span class="ico" aria-hidden="true">🌍</span>
-      <span class="txt"><b>Travel Your Best</b><span class="sub">Our travel guides from around the world</span></span>
-      <span class="arr" aria-hidden="true">→</span>
+  <div class="body">
+    <a class="site" href="https://travelyourbest.com/" data-href-es="https://travelyourbest.com/es/">
+      <small data-en="Our travel guides" data-es="Nuestras guías de viaje">Our travel guides</small>
+      <b>TravelYourBest.com</b>
+      <span class="strip">
+        <img src="../images/thumbs/seychelles.webp" alt="" width="44" height="44">
+        <img src="../images/thumbs/paris.webp" alt="" width="44" height="44">
+        <img src="../images/thumbs/japan.webp" alt="" width="44" height="44">
+        <img src="../images/thumbs/rome.webp" alt="" width="44" height="44">
+        <span data-en="41 destinations, from Paris to the Seychelles" data-es="41 destinos, de París a las Seychelles">41 destinations, from Paris to the Seychelles</span>
+      </span>
+      <span class="go" aria-hidden="true">→</span>
     </a>
 
-    <p class="label">Our favourites</p>
-
-    <div class="lk-group">
-      <a class="lk" href="https://roamless.sjv.io/qWKQky" target="_blank" rel="sponsored noopener">
-        <span class="ico" style="background:#e6f1f8" aria-hidden="true">📶</span>
-        <span class="txt"><b>Roamless eSIM</b><span class="sub">The eSIM we use to stay connected abroad</span></span>
+    <p class="label" data-en="Plan your next trip" data-es="Planea tu próximo viaje">Plan your next trip</p>
+    <div class="links">
+      <a class="lk lk--dark" href="https://travelyourbest.com/cruises.html" data-href-es="https://travelyourbest.com/es/cruises.html">
+        <span class="ico"><img src="../images/thumbs/cruises.webp" alt=""></span>
+        <span class="txt"><b data-en="Our cruises" data-es="Nuestros cruceros">Our cruises</b><span class="sub" data-en="Royal Caribbean, MSC, Norwegian &amp; Celebrity" data-es="Royal Caribbean, MSC, Norwegian y Celebrity">Royal Caribbean, MSC, Norwegian &amp; Celebrity</span></span>
         <span class="arr" aria-hidden="true">→</span>
       </a>
-      <div class="code"><span>Code <b>TRAVELYOURBEST15</b></span><button type="button" data-code="TRAVELYOURBEST15">Copy</button></div>
-    </div>
-
-    <div class="lk-group">
-      <a class="lk" href="https://www.cabinzero.com/ANDREWLOVESMELODY" target="_blank" rel="sponsored noopener">
-        <span class="ico" style="background:#efede9" aria-hidden="true">🎒</span>
-        <span class="txt"><b>CabinZero Bags &amp; Luggage</b><span class="sub">15% off our favourite cabin bags</span></span>
+      <a class="lk" href="https://travelyourbest.com/products.html">
+        <span class="ico" aria-hidden="true">🧳</span>
+        <span class="txt"><b data-en="Our travel gear" data-es="Nuestro equipo de viaje">Our travel gear</b><span class="sub" data-en="Everything we pack and recommend" data-es="Todo lo que llevamos y recomendamos">Everything we pack and recommend</span></span>
         <span class="arr" aria-hidden="true">→</span>
       </a>
-      <div class="code code--cz"><span>Code <b>ANDREWLOVESMELODY</b></span><button type="button" data-code="ANDREWLOVESMELODY">Copy</button></div>
     </div>
 
-    <div class="lk-group">
-      <a class="lk" href="http://rstr.co/chatbookers/travelyourbest" target="_blank" rel="sponsored noopener">
-        <span class="ico" style="background:#fdeee6" aria-hidden="true">📖</span>
-        <span class="txt"><b>Chatbooks</b><span class="sub">Print your travel memories as photo books</span></span>
+    <p class="label" data-en="Our favourites" data-es="Nuestros favoritos">Our favourites</p>
+    <div class="links">
+      <div class="grp">
+        <a class="lk" href="https://roamless.sjv.io/qWKQky" target="_blank" rel="sponsored noopener">
+          <span class="ico" style="background:#e6f1f8" aria-hidden="true">📶</span>
+          <span class="txt"><b>Roamless eSIM</b><span class="sub" data-en="The eSIM we use to stay connected abroad" data-es="La eSIM que usamos para tener datos en el extranjero">The eSIM we use to stay connected abroad</span></span>
+          <span class="arr" aria-hidden="true">→</span>
+        </a>
+        <div class="code code--blue"><span><span data-en="Code" data-es="Código">Code</span> <b>TRAVELYOURBEST15</b></span><button type="button" data-code="TRAVELYOURBEST15" data-en="Copy" data-es="Copiar">Copy</button></div>
+      </div>
+
+      <div class="grp">
+        <a class="lk" href="https://www.cabinzero.com/ANDREWLOVESMELODY" target="_blank" rel="sponsored noopener">
+          <span class="ico" style="background:#efede9" aria-hidden="true">🎒</span>
+          <span class="txt"><b data-en="CabinZero bags &amp; luggage" data-es="Mochilas y maletas CabinZero">CabinZero bags &amp; luggage</b><span class="sub" data-en="15% off our favourite cabin bags" data-es="15 % de descuento en nuestras mochilas de cabina favoritas">15% off our favourite cabin bags</span></span>
+          <span class="arr" aria-hidden="true">→</span>
+        </a>
+        <div class="code"><span><span data-en="Code" data-es="Código">Code</span> <b>ANDREWLOVESMELODY</b></span><button type="button" data-code="ANDREWLOVESMELODY" data-en="Copy" data-es="Copiar">Copy</button></div>
+      </div>
+
+      <div class="grp">
+        <a class="lk" href="http://rstr.co/chatbookers/travelyourbest" target="_blank" rel="sponsored noopener">
+          <span class="ico" style="background:#fdeee6" aria-hidden="true">📖</span>
+          <span class="txt"><b>Chatbooks</b><span class="sub" data-en="Print your travel memories as photo books" data-es="Imprime tus recuerdos de viaje en álbumes de fotos">Print your travel memories as photo books</span></span>
+          <span class="arr" aria-hidden="true">→</span>
+        </a>
+        <div class="code"><span><span data-en="Code" data-es="Código">Code</span> <b>AFF26RhfayGmF</b></span><button type="button" data-code="AFF26RhfayGmF" data-en="Copy" data-es="Copiar">Copy</button></div>
+      </div>
+
+      <a class="lk" href="https://xeroshoes.com/?utm_source=4758778&amp;utm_medium=Rak_Affiliate&amp;utm_campaign=TravelYourBest&amp;utm_keyword=JmE5s_UPYc0-.b_GZP9d208j2_Y528lCmQ&amp;ranMID=54010&amp;ranEAID=JmE5s%2FUPYc0&amp;ranSiteID=JmE5s_UPYc0-.b_GZP9d208j2_Y528lCmQ" target="_blank" rel="sponsored noopener">
+        <span class="ico" style="background:#e9efe9" aria-hidden="true">👟</span>
+        <span class="txt"><b data-en="Xero Shoes &amp; Boots" data-es="Zapatos y botas Xero Shoes">Xero Shoes &amp; Boots</b><span class="sub" data-en="Light, packable shoes for long travel days" data-es="Zapatos ligeros y fáciles de llevar para días largos de viaje">Light, packable shoes for long travel days</span></span>
         <span class="arr" aria-hidden="true">→</span>
       </a>
-      <div class="code code--cz"><span>Code <b class="notranslate" translate="no">AFF26RhfayGmF</b></span><button type="button" data-code="AFF26RhfayGmF">Copy</button></div>
+
+      <a class="lk" href="https://conelibags.com/?sca_ref=12689332.Ht6PvCYaG8&amp;utm_source=affiliate&amp;utm_medium=uppromote&amp;utm_campaign=affiliate" target="_blank" rel="sponsored noopener">
+        <span class="ico" style="background:#fbeef3" aria-hidden="true">👜</span>
+        <span class="txt"><b>Coneli Bags</b><span class="sub" data-en="Bags we love for travel" data-es="Bolsos que nos encantan para viajar">Bags we love for travel</span></span>
+        <span class="arr" aria-hidden="true">→</span>
+      </a>
     </div>
 
-    <a class="lk" href="https://xeroshoes.com/?utm_source=4758778&amp;utm_medium=Rak_Affiliate&amp;utm_campaign=TravelYourBest&amp;utm_keyword=JmE5s_UPYc0-.b_GZP9d208j2_Y528lCmQ&amp;ranMID=54010&amp;ranEAID=JmE5s%2FUPYc0&amp;ranSiteID=JmE5s_UPYc0-.b_GZP9d208j2_Y528lCmQ" target="_blank" rel="sponsored noopener">
-      <span class="ico" style="background:#e9efe9" aria-hidden="true">👟</span>
-      <span class="txt"><b>Xero Shoes &amp; Boots</b><span class="sub">Light, packable shoes for long travel days</span></span>
-      <span class="arr" aria-hidden="true">→</span>
-    </a>
-
-    <a class="lk" href="https://conelibags.com/?sca_ref=12689332.Ht6PvCYaG8&amp;utm_source=affiliate&amp;utm_medium=uppromote&amp;utm_campaign=affiliate" target="_blank" rel="sponsored noopener">
-      <span class="ico" aria-hidden="true">👜</span>
-      <span class="txt"><b>Coneli Bags</b><span class="sub">Bags we love for travel</span></span>
-      <span class="arr" aria-hidden="true">→</span>
-    </a>
-
-    <a class="lk" href="https://travelyourbest.com/products.html">
-      <span class="ico" aria-hidden="true">🧳</span>
-      <span class="txt"><b>Our travel gear</b><span class="sub">Everything we pack and recommend</span></span>
-      <span class="arr" aria-hidden="true">→</span>
-    </a>
+    <footer>
+      <b>TravelYourBest.com</b><br>
+      <span data-en="Some links are affiliate links: we may earn a small commission at no extra cost to you." data-es="Algunos enlaces son de afiliado: podemos ganar una pequeña comisión sin coste extra para ti.">Some links are affiliate links: we may earn a small commission at no extra cost to you.</span>
+    </footer>
   </div>
-
-  <footer>Some links are affiliate links: we may earn a small commission at no extra cost to you.<br>© Travel Your Best</footer>
 </main>
 <script>
-document.querySelectorAll('[data-code]').forEach(b=>b.addEventListener('click',()=>{
-  const t=b.dataset.code;
-  (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>{b.textContent='Copied!';setTimeout(()=>b.textContent='Copy',1600)}).catch(()=>{b.textContent=t});
-}));
+(function(){
+  var KEY='tyb-lang', lang='en';
+  try{ lang = localStorage.getItem(KEY) || ((navigator.language||'').toLowerCase().indexOf('es')===0 ? 'es' : 'en'); }catch(e){}
+  function apply(l){
+    lang=l; document.documentElement.lang=l;
+    document.querySelectorAll('[data-en]').forEach(function(el){ el.textContent = el.getAttribute('data-'+l); });
+    document.querySelectorAll('[data-href-es]').forEach(function(a){
+      if(!a.dataset.hrefEn) a.dataset.hrefEn = a.getAttribute('href');
+      a.setAttribute('href', l==='es' ? a.dataset.hrefEs : a.dataset.hrefEn);
+    });
+    document.querySelectorAll('.lang button').forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.set===l ? 'true' : 'false'); });
+    try{ localStorage.setItem(KEY,l); }catch(e){}
+  }
+  document.querySelectorAll('.lang button').forEach(function(b){ b.addEventListener('click', function(){ apply(b.dataset.set); }); });
+  document.querySelectorAll('[data-code]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var t=b.dataset.code, done=function(){ b.textContent = lang==='es' ? '¡Copiado!' : 'Copied!'; setTimeout(function(){ b.textContent=b.getAttribute('data-'+lang); },1600); };
+      if(navigator.clipboard){ navigator.clipboard.writeText(t).then(done).catch(function(){ b.textContent=t; }); } else { b.textContent=t; }
+    });
+  });
+  apply(lang);
+})();
 </script>
 </body>
 </html>
