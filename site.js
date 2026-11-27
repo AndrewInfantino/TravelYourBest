@@ -87,8 +87,8 @@ const DESTS = [
   {n:'Vietnam',s:'Hanoi & Ninh Binh',u:'vietnam.html',r:'as',i:'ninhbinh-trangan-boat-couple.webp'}
 ];
 const REGIONS = TYB_ES
-  ? [['it','Italia'],['eu','Europa'],['me','Turquía y Oriente Medio'],['af','África y el Índico'],['as','Asia'],['am','América y el Caribe']]
-  : [['it','Italy'],['eu','Europe'],['me','Türkiye & the Middle East'],['af','Africa & the Indian Ocean'],['as','Asia'],['am','The Americas & Caribbean']];
+  ? [['eu','Europa'],['it','Italia'],['me','Turquía y Oriente Medio'],['af','África y el Índico'],['as','Asia'],['am','América y el Caribe']]
+  : [['eu','Europe'],['it','Italy'],['me','Türkiye & the Middle East'],['af','Africa & the Indian Ocean'],['as','Asia'],['am','The Americas & Caribbean']];
 const thumb = d => TYB_ROOT + 'images/thumbs/' + d.u.replace('.html','') + '.webp';
 const big = d => TYB_ROOT + 'images/' + d.i;
 const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
@@ -144,8 +144,9 @@ const Explorer = (function(){
   xp.className = 'xp'; xp.id = 'explorer';
   xp.setAttribute('role','dialog'); xp.setAttribute('aria-modal','true'); xp.setAttribute('aria-label', L.where);
   const link = (u, label) => '<a href="'+tybUrl(u)+'">'+label+'</a>';
-  const mainLinks = link('index.html', L.home) + link('cruises.html', L.cruises) + link('products.html', L.products) + link('about.html', L.ourStory) + link('contact.html', L.contact);
+  const mainLinks = link('index.html', L.home) + link('products.html', L.products) + link('about.html', L.ourStory) + link('contact.html', L.contact);
   let regions = '';
+  const cruiseBlock = '<div class="xp-region xp-cruise" data-r="cruise"><h3>'+L.cruises+'</h3><ul><li><a href="'+tybUrl('cruises.html')+'" data-n="__cruises"'+(here==='cruises.html'?' aria-current="page"':'')+'><img loading="lazy" src="'+TYB_ROOT+'images/thumbs/cruises.webp" alt="" width="38" height="38"><span><b>'+(TYB_ES?'Nuestros cruceros':'Our cruises')+'</b><span>Royal Caribbean, MSC, Norwegian '+(TYB_ES?'y':'&amp;')+' Celebrity</span></span></a></li></ul></div>';
   REGIONS.forEach(([k, label]) => {
     const items = DESTS.filter(d => d.r === k).sort((a,b) => tybName(a.n).localeCompare(tybName(b.n)));
     const h3 = k === 'it' ? '<a class="xp-hub" href="'+tybUrl('italy.html')+'">'+label+' <span aria-hidden="true">→</span></a>' : label;
@@ -161,7 +162,7 @@ const Explorer = (function(){
       '<p class="xp-q">'+L.where+'</p>' +
       '<div class="xp-mlinks">' + mainLinks + '</div>' +
       '<div class="xp-search">'+ICON.search+'<input type="search" placeholder="'+L.search+'" aria-label="'+L.search+'" autocomplete="off"></div>' +
-      '<div class="xp-regions">' + regions + '</div><p class="xp-none">'+L.none+'</p>' +
+      '<div class="xp-regions">' + regions + cruiseBlock + '</div><p class="xp-none">'+L.none+'</p>' +
       '<div class="xp-social"><a href="https://www.instagram.com/andrewlovesmelody/" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@andrewlovesmelody" target="_blank" rel="noopener">TikTok</a></div>' +
     '</div><figure class="xp-preview"><div class="card"><img src="'+big(first)+'" alt="" width="1125" height="1500" loading="lazy"><figcaption>'+esc(tybName(first.n))+'</figcaption></div></figure></div></div>';
   document.body.appendChild(xp);
@@ -200,7 +201,7 @@ const Explorer = (function(){
       let n = 0;
       r.querySelectorAll('li').forEach(li => {
         const d = DESTS.find(x => x.n === li.firstChild.dataset.n);
-        const ok = !q || matches(d, q); li.hidden = !ok; if(ok) n++;
+        const ok = !q || (d ? matches(d, q) : /cruise|crucero|royal|msc|norwegian|celebrity/i.test(q)); li.hidden = !ok; if(ok) n++;
       });
       r.classList.toggle('empty', n === 0); shown += n;
     });
@@ -272,18 +273,12 @@ const Explorer = (function(){
     ['cappadocia.html','Turkey','home-hero-couple.webp'],
     ['thailand.html','Phuket','phuket-elephant-kiss.webp'],
     ['seychelles.html','Indian Ocean','seychelles-source-dargent-couple-on-boulder.webp'],
-    ['paris.html','France','paris-eiffel-trocadero-couple.webp'],
-    ['japan.html','Mt Fuji in bloom','fuji-oishi-flowers.webp'],
-    ['madagascar.html','Avenue of the Baobabs','madagascar-baobab-avenue-couple-walking.webp'],
-    ['bali.html','Indonesia','lempuyang-gates-melody.webp'],
-    ['prague.html','Czech Republic','prague-couple-riverside-charles-bridge.webp'],
-    ['morocco.html','The Sahara','morocco-sahara-camel-shadows.webp'],
-    ['venice.html','Italy','venice-gondola-selfie-rialto.webp'],
-    ['mauritius.html','Le Morne','mauritius-le-morne-golden-hour-couple.webp'],
-    ['positano.html','Amalfi Coast','positano-panorama.webp'],
-    ['barcelona.html','Our home city','barcelona-park-guell-bench-couple.webp']
+    ['barcelona.html','Our home city','barcelona-park-guell-bench-couple.webp'],
+    ['cairo.html','Egypt','giza-jump-melody.webp'],
+    ['como.html','Italy','como-villa-terrace-melody.webp'],
+    ['madagascar.html','Avenue of the Baobabs','madagascar-baobab-avenue-couple-walking.webp']
   ];
-  const SUB_ES = {'Turkey':'Turquía','Indian Ocean':'Océano Índico','Mt Fuji in bloom':'El monte Fuji en flor','Avenue of the Baobabs':'Avenida de los Baobabs','Czech Republic':'República Checa','The Sahara':'El Sáhara','Italy':'Italia','Amalfi Coast':'Costa Amalfitana','Our home city':'Nuestra ciudad','France':'Francia','Le Morne':'Le Morne','Indonesia':'Indonesia'};
+  const SUB_ES = {'Turkey':'Turquía','Indian Ocean':'Océano Índico','Mt Fuji in bloom':'El monte Fuji en flor','Avenue of the Baobabs':'Avenida de los Baobabs','Czech Republic':'República Checa','The Sahara':'El Sáhara','Italy':'Italia','Amalfi Coast':'Costa Amalfitana','Our home city':'Nuestra ciudad','Egypt':'Egipto','France':'Francia','Le Morne':'Le Morne','Indonesia':'Indonesia'};
   const sub = s => TYB_ES ? (SUB_ES[s[1]] || s[1]) : s[1];
   const firstImg = deck.querySelector('img');
   deck.innerHTML = '';
